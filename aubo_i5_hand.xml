@@ -1,0 +1,296 @@
+<mujoco model="aubo_i5">
+  <compiler angle="radian" meshdir="meshes" autolimits="true" />
+
+  <option integrator="implicitfast"/>
+
+  <default>
+
+    <geom density="1175"/>
+    <default class="normal">
+      <geom density="1175"/>      
+    </default>
+
+    <default class="size3">
+      <general gaintype="fixed" biastype="affine" ctrlrange="-3.04 3.04" gainprm="2000" biasprm="0 -2000 -400"
+                  forcerange="-150 150"/>
+      <default class="size1">
+        <general gainprm="500" biasprm="0 -500 -100" forcerange="-28 28"/>
+      </default>
+    </default>
+      
+    <default class="visual">
+      <geom group="2" type="mesh" contype="0" conaffinity="0" density="0"/>
+    </default>
+    <default class="collision">
+      <geom group="3" type="mesh" density="2700"/>
+    </default>
+    <site size="0.001" rgba="0.5 0.5 0.5 0.3" group="4"/>
+  </default>
+  
+  <asset>
+    <material name="Opaque(63,63,63)" specular="0.5" shininess="0.5" rgba="0.250980 0.250980 0.250980 1.0"/>
+    <material name="Opaque(229,234,237)" specular="0.5" shininess="0.5" rgba="0.898039 0.917647 0.929412 1.0"/>
+    <material name="Opaque(232,133,0)" specular="0.5" shininess="0.5" rgba="0.909804 0.521569 0.000000 1.0"/>
+    <material name="Opaque(202,209,238)" specular="0.5" shininess="0.5" rgba="0.792157 0.819608 0.933333 1.0"/>
+    <material name="Opaque(255,255,255)" specular="0.5" shininess="0.5" rgba="1.000000 1.000000 1.000000 1.0"/>
+
+    <mesh file="aubo_i5/visual/base_link_0.obj" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/visual/base_link_1.obj" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/visual/shoulder_link_0.obj" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/visual/shoulder_link_1.obj" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/visual/upper_arm_link_0.obj" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/visual/upper_arm_link_1.obj" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/visual/forearm_link_0.obj" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/visual/forearm_link_1.obj" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/visual/wrist_1_link_0.obj" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/visual/wrist_1_link_1.obj" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/visual/wrist_2_link_0.obj" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/visual/wrist_2_link_1.obj" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/visual/wrist_3_link_0.obj" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/visual/wrist_3_link_1.obj" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/visual/wrist_3_link_2.obj" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/visual/wrist_3_link_3.obj" scale="0.001 0.001 0.001"/>
+
+    <mesh file="aubo_i5/collision/base_link_collision.stl" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/collision/shoulder_link_collision.stl" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/collision/upper_arm_link_collision_0.stl" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/collision/upper_arm_link_collision_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/collision/upper_arm_link_collision_2.stl" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/collision/forearm_link_collision_0.stl" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/collision/forearm_link_collision_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/collision/forearm_link_collision_2.stl" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/collision/wrist_1_link_collision.stl" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/collision/wrist_2_link_collision.stl" scale="0.001 0.001 0.001"/>
+    <mesh file="aubo_i5/collision/wrist_3_link_collision.stl" scale="0.001 0.001 0.001"/>
+
+    <mesh file="hand/AUBO_Base.STL"    />
+    <mesh file="hand/Below_Palm.STL"     />
+    <mesh file="hand/Knuckle_Holder.STL"  />
+    <mesh file="hand/T_CMC.STL"     />
+    <mesh file="hand/T_MCP.STL"   />
+    <mesh file="hand/T_IP.STL"    />
+    <mesh file="hand/I_Below_MCP.STL"      />
+    <mesh file="hand/I_MCP.STL"      />
+    <mesh file="hand/I_PIP.STL"    />
+    <mesh file="hand/I_DIP.STL"     />
+    <mesh file="hand/M_MCP.STL"      />
+    <mesh file="hand/M_PIP.STL"    />
+    <mesh file="hand/M_DIP.STL"      />
+    <mesh file="hand/R_Below_MCP.STL"    />
+    <mesh file="hand/R_MCP.STL"      />
+    <mesh file="hand/R_PIP.STL"     />
+    <mesh file="hand/R_DIP.STL"       />
+    <mesh file="hand/P_Below_MCP.STL"      />
+    <mesh file="hand/P_MCP.STL"      />
+    <mesh file="hand/P_PIP.STL"      />
+    <mesh file="hand/P_DIP.STL"     />
+  </asset>
+
+
+  <worldbody>
+    <body name="base_link">
+      <inertial pos="5.28033e-09 0.00159669 0.0165705" quat="0.495398 0.50456 -0.50456 0.495398" mass="1.43822" diaginertia="0.0055319 0.003103 0.0028571"/>
+      <geom mesh="base_link_0" material="Opaque(229,234,237)" class="visual"/>
+      <geom mesh="base_link_1" material="Opaque(63,63,63)" class="visual"/>
+      <geom mesh="base_link_collision" class="collision"/>
+
+      <body name="shoulder_link" pos="0 0 0.0435">
+        <inertial pos="-4.18504e-07 -0.00538388 0.0698852" quat="0.997139 0.0755851 0 0" mass="3.99774" diaginertia="0.010612 0.0103292 0.00776575"/>
+        <joint name="shoulder_pan_joint" pos="0 0 0" axis="0 0 1" range="-3.04 3.04"/>
+        <geom mesh="shoulder_link_0" pos="0 0 -0.0435" material="Opaque(63,63,63)" class="visual"/>
+        <geom mesh="shoulder_link_1" pos="0 0 -0.0435" material="Opaque(232,133,0)" class="visual"/>
+        <geom mesh="shoulder_link_collision" pos="0 0 -0.0435" class="collision"/>
+
+        <body name="upper_arm_link" pos="0 -0.062 0.0785">
+          <inertial pos="4.51558e-10 -0.0717894 0.204" quat="1 0 -1.45662e-06 0" mass="10.2644" diaginertia="0.367413 0.361705 0.024156"/>
+          <joint name="shoulder_lift_joint" pos="0 0 0" axis="0 -1 0" range="-3.04 3.04"/>
+          <geom mesh="upper_arm_link_0" pos="0 0.062 -0.122" material="Opaque(63,63,63)" class="visual"/>
+          <geom mesh="upper_arm_link_1" pos="0 0.062 -0.122" material="Opaque(232,133,0)" class="visual"/>
+          <geom mesh="upper_arm_link_collision_0" pos="0 0.062 -0.122" class="collision"/>
+          <geom mesh="upper_arm_link_collision_1" pos="0 0.062 -0.122" class="collision"/>
+          <geom mesh="upper_arm_link_collision_2" pos="0 0.062 -0.122" class="collision"/>
+
+          <body name="forearm_link" pos="0 0 0.408">
+            <inertial pos="-8.5989e-08 0.0377796 0.186257" quat="0.999989 -0.00464387 0 0" mass="5.71706" diaginertia="0.110129 0.109714 0.00516198"/>
+            <joint name="elbow_joint" pos="0 0 0" axis="0 1 0" range="-3.04 3.04"/>
+            <geom mesh="forearm_link_0" pos="0 0.062 -0.53" material="Opaque(63,63,63)" class="visual"/>
+            <geom mesh="forearm_link_1" pos="0 0.062 -0.53" material="Opaque(232,133,0)" class="visual"/>
+            <geom mesh="forearm_link_collision_0" pos="0 0.062 -0.53" class="collision"/>
+            <geom mesh="forearm_link_collision_1" pos="0 0.062 -0.53" class="collision"/>
+            <geom mesh="forearm_link_collision_2" pos="0 0.062 -0.53" class="collision"/>
+
+
+            <body name="wrist_1_link" pos="0 -0.0175 0.376">
+              <inertial pos="4.04369e-07 -0.0378176 0.010378" quat="0.996128 0.0879183 0 0" mass="1.19598" diaginertia="0.001481 0.00143005 0.000971945"/>
+              <joint name="wrist_1_joint" pos="0 0 0" axis="0 -1 0" range="-3.04 3.04"/>              
+              <geom mesh="wrist_1_link_0" pos="0 0.0795 -0.906" material="Opaque(63,63,63)" class="visual"/>
+              <geom mesh="wrist_1_link_1" pos="0 0.0795 -0.906" material="Opaque(232,133,0)" class="visual"/>
+              <geom mesh="wrist_1_link_collision" pos="0 0.0795 -0.906" class="collision"/>
+
+
+              <body name="wrist_2_link" pos="0 -0.042 0.06056">
+                <inertial pos="-3.83591e-07 -0.0103783 0.0378173" quat="0.766536 0.642201 0 0" mass="1.19598" diaginertia="0.001481 0.00143005 0.000971945"/>
+                <joint name="wrist_2_joint" pos="0 0 0" axis="0 0 1" range="-3.04 3.04"/>
+                <geom mesh="wrist_2_link_0" pos="0 0.1215 -0.96656" material="Opaque(63,63,63)" class="visual"/>
+                <geom mesh="wrist_2_link_1" pos="0 0.1215 -0.96656" material="Opaque(232,133,0)" class="visual"/>
+                <geom mesh="wrist_2_link_collision" pos="0 0.1215 -0.96656" class="collision"/>
+
+                <body name="wrist_3_link" pos="0 -0.06056 0.042">
+                  <inertial pos="4.15409e-09 -0.0185535 0.000352259" quat="0.707088 -0.00519777 0.00519777 0.707088" mass="0.192478" diaginertia="0.000169015 0.000104 0.000100985"/>
+                  <joint name="wrist_3_joint" pos="0 0 0" axis="0 -1 0" range="-3.04 3.04"/>
+                  <geom mesh="wrist_3_link_0" pos="0 0.18206 -1.00856" material="Opaque(229,234,237)" class="visual"/>
+                  <geom mesh="wrist_3_link_1" pos="0 0.18206 -1.00856" material="Opaque(63,63,63)" class="visual"/>
+                  <geom mesh="wrist_3_link_2" pos="0 0.18206 -1.00856" material="Opaque(63,63,63)" class="visual"/>
+                  <geom mesh="wrist_3_link_3" pos="0 0.18206 -1.00856" material="Opaque(63,63,63)" class="visual"/>
+                  <geom mesh="wrist_3_link_collision" pos="0 0.18206 -1.00856" class="collision"/>
+                  
+                  <body name="tool0_link" pos="0 -0.0335 0" quat="0.7071068 0.7071068 0 0">
+                    <site name="attachment_site" pos="0 0 0" quat="1 0 0 0"/>
+                    <site name="eef_site" pos="0 0 0.2" quat="0 -0.7071068 -0.7071068 0"/>
+
+                    <body name="AUBO_Base" pos="-0.00278 0 -0.0075" quat="0 0 0 1">
+                      <geom class="normal" type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="AUBO_Base"/>
+                      <body name="Below_Palm" pos="0 0 0.049" quat="0.499998 0.5 0.500002 0.5">
+                        <joint name="Wrist_2" pos="0 0 0" axis="0 0 1" range="-1.1294 1.2489"/>
+                        <geom class="normal" type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="Below_Palm"/>
+                        <body name="Knuckle_Holder" pos="0 0.048 0.0027545" quat="0.707105 0 0.707108 0">
+                          <joint name="Wrist_1" pos="0 0 0" axis="0 0 1" range="-0.41544 0.41544"/>
+                          <geom class="normal" type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="Knuckle_Holder"/>
+                          <body name="T_CMC" pos="-0.03389 -0.0067732 0.011594" quat="0.505903 0.741795 -0.431791 0.085783">
+                            <joint name="Thumb_CMC" pos="0 0 0" axis="0.642791 0 0.766041" range="-1.5708 0"/>
+                            <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="T_CMC"/>
+                            <body name="T_MCP" pos="0 0.051 -0.011349" quat="0.999927 0.0121107 0 0">
+                              <joint name="Thumb_MCP" pos="0 0 0" axis="1 0 0" range="-1.5528 -0.86457"/>
+                              <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="T_MCP"/>
+                              <body name="T_IP" pos="0 0.0465 0" quat="0.999997 0.00263245 0 0">
+                                <joint name="Thumb_IP" pos="0 0 0" axis="1 0 0" range="-1.23306 -0.538504"/>
+                                <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="T_IP"/>
+                              </body>
+                            </body>
+                          </body>
+                          <body name="I_Below_MCP" pos="-0.042 0.087 0" quat="1.34924e-11 -3.67321e-06 -1 3.67321e-06">
+                            <joint name="Index_Below_MCP" pos="0 0 0" axis="0 0 1" range="-0.52018 0"/>
+                            <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="I_Below_MCP"/>
+                            <body name="I_MCP" pos="0 0.028 0.0105">
+                              <joint name="Index_MCP" pos="0 0 0" axis="1 0 0" range="-1.3654 -0.34457"/>
+                              <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="I_MCP"/>
+                              <body name="I_PIP" pos="0 0.051 -0.00225" quat="0.707074 0.00685753 0.707074 0.00685753">
+                                <joint name="Index_PIP" pos="0 0 0" axis="0 0 1" range="-1.4455 -0.7113"/>
+                                <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="I_PIP"/>
+                                <body name="I_DIP" pos="0 0.048 0" quat="0.999953 0 0 -0.00967435">
+                                  <joint name="Index_DIP" pos="0 0 0" axis="0 0 1" range="-1.33744 -0.6394"/>
+                                  <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="I_DIP"/>
+                                </body>
+                              </body>
+                            </body>
+                          </body>
+                          <body name="M_MCP" pos="-0.001 0.121 -0.01094" quat="1.34924e-11 -3.67321e-06 -1 3.67321e-06">
+                            <joint name="Middle_MCP" pos="0 0 0" axis="1 0 0" range="-1.4628 -0.61793"/>
+                            <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="M_MCP"/>
+                            <body name="M_PIP" pos="0 0.045 -0.00225">
+                              <joint name="Middle_PIP" pos="0 0 0" axis="1 0 0" range="-1.40814 -0.74815"/>
+                              <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="M_PIP"/>
+                              <body name="M_DIP" pos="0 0.0515 0">
+                                <joint name="Middle_DIP" pos="0 0 0" axis="1 0 0" range="-1.18872 -0.45629"/>
+                                <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="M_DIP"/>
+                              </body>
+                            </body>
+                          </body>
+                          <body name="R_Below_MCP" pos="0.014 0.087 0">
+                            <joint name="Ring_Below_MCP" pos="0 0 0" axis="0 0 1" range="-0.52018 0"/>
+                            <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="R_Below_MCP"/>
+                            <body name="R_MCP" pos="0 0.028 -0.0105" quat="1.34924e-11 -3.67321e-06 1 -3.67321e-06">
+                              <joint name="Ring_MCP" pos="0 0 0" axis="1 0 0" range="-1.35699 -0.470253"/>
+                              <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="R_MCP"/>
+                              <body name="R_PIP" pos="0 0.045 -0.00225">
+                                <joint name="Ring_PIP" pos="0 0 0" axis="1 0 0" range="-1.41949 -0.691415"/>
+                                <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="R_PIP"/>
+                                <body name="R_DIP" pos="0 0.0515 0">
+                                  <joint name="Ring_DIP" pos="0 0 0" axis="1 0 0" range="-1.3961 -0.708346"/>
+                                  <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="R_DIP"/>
+                                </body>
+                              </body>
+                            </body>
+                          </body>
+                          <body name="P_Below_MCP" pos="0.042 0.087 0">
+                            <joint name="Pinky_Below_MCP" pos="0 0 0" axis="0 0 1" range="-0.74186 0"/>
+                            <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="P_Below_MCP"/>
+                            <body name="P_MCP" pos="0 0.028 -0.0105" quat="1.34924e-11 -3.67321e-06 1 -3.67321e-06">
+                              <joint name="Pinky_MCP" pos="0 0 0" axis="1 0 0" range="-1.4134 -0.46659"/>
+                              <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="P_MCP"/>
+                              <body name="P_PIP" pos="0 0.0455 -0.00225">
+                                <joint name="Pinky_PIP" pos="0 0 0" axis="1 0 0" range="-1.32104 -0.67483"/>
+                                <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="P_PIP"/>
+                                <body name="P_DIP" pos="0 0.0465 0">
+                                  <joint name="Pinky_DIP" pos="0 0 0" axis="1 0 0" range="-1.38702 -0.70765"/>
+                                  <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="P_DIP"/>
+                                </body>
+                              </body>
+                            </body>
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <contact>
+    <exclude body1="base_link" body2="shoulder_link"/>
+
+    <exclude body1="Below_Palm" body2="AUBO_Base"/>
+    <exclude body1="Below_Palm" body2="Knuckle_Holder"/>
+    <exclude body1="Knuckle_Holder" body2="T_CMC"/>
+    <exclude body1="Knuckle_Holder" body2="I_Below_MCP"/>
+    <exclude body1="Knuckle_Holder" body2="M_MCP"/>
+    <exclude body1="Knuckle_Holder" body2="R_Below_MCP"/>
+    <exclude body1="Knuckle_Holder" body2="P_Below_MCP"/>
+
+    <exclude body1="R_MCP" body2="R_Below_MCP"/>
+    <exclude body1="P_MCP" body2="P_Below_MCP"/>
+    <exclude body1="I_MCP" body2="I_Below_MCP"/>
+
+    <exclude body1="R_MCP" body2="Knuckle_Holder"/>
+    <exclude body1="P_MCP" body2="Knuckle_Holder"/>
+    <exclude body1="I_MCP" body2="Knuckle_Holder"/>
+
+    <exclude body1="T_CMC" body2="Knuckle_Holder"/>
+    <exclude body1="T_CMC" body2="T_MCP"/>
+    <exclude body1="T_MCP" body2="T_IP"/>
+  </contact>
+
+  <actuator>
+    <general class="size3" name="shoulder_pan" joint="shoulder_pan_joint"/>
+    <general class="size3" name="shoulder_lift" joint="shoulder_lift_joint"/>
+    <general class="size3" name="elbow" joint="elbow_joint"/>
+    <general class="size1" name="wrist_1" joint="wrist_1_joint"/>
+    <general class="size1" name="wrist_2" joint="wrist_2_joint"/>
+    <general class="size1" name="wrist_3" joint="wrist_3_joint"/>
+    <general gaintype="fixed" biastype="affine" name="wrist_2_joint" joint="Wrist_2" ctrlrange="-1.1294 1.2489" gainprm="7" biasprm="0 -7 -1" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Wrist_1_joint" joint="Wrist_1" ctrlrange="-0.41544 0.41544" gainprm="7" biasprm="0 -7 -0.1" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Thumb_CMC_joint" joint="Thumb_CMC" ctrlrange="-1.5708 0" gainprm="0.8" biasprm="0 -0.8 -0.005" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Thumb_MCP_joint" joint="Thumb_MCP" ctrlrange="-1.5528 -0.86457" gainprm="0.2" biasprm="0 -0.2 -0.001" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Thumb_IP_joint" joint="Thumb_IP" ctrlrange="-1.23306 -0.538504" gainprm="0.05" biasprm="0 -0.05 -0.0003" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Index_Below_MCP_joint" joint="Index_Below_MCP" ctrlrange="-0.52018 0" gainprm="1" biasprm="0 -1 0"  forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Index_MCP_joint" joint="Index_MCP" ctrlrange="-1.3654 -0.34457" gainprm="1" biasprm="0 -1 -0.006" forcerange="-10 10"/>
+    <general gaintype="fixed" biastype="affine" name="Index_PIP_joint" joint="Index_PIP" ctrlrange="-1.4455 -0.7113" gainprm="1" biasprm="0 -1 -0.001" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Index_DIP_joint" joint="Index_DIP" ctrlrange="-1.33744 -0.6394" gainprm="0.3" biasprm="0 -0.3 -0.001" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Middle_MCP_joint" joint="Middle_MCP" ctrlrange="-1.4628 -0.61793" gainprm="3.5" biasprm="0 -3.5 -0.002" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Middle_PIP_joint" joint="Middle_PIP" ctrlrange="-1.40814 -0.74815" gainprm="2" biasprm="0 -2 -0.002" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Middle_DIP_joint" joint="Middle_DIP" ctrlrange="-1.18872 -0.45629" gainprm="0.2" biasprm="0 -0.2 -0.002" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Ring_Below_MCP_joint" joint="Ring_Below_MCP" ctrlrange="-0.52018 0" gainprm="1.2" biasprm="0 -1.2 0" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Ring_MCP_joint" joint="Ring_MCP" ctrlrange="-1.35699 -0.470253" gainprm="1.5" biasprm="0 -1.5 -0.004" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Ring_PIP_joint" joint="Ring_PIP" ctrlrange="-1.41949 -0.691415" gainprm="0.7" biasprm="0 -0.7 -0.001" forcerange="-5 5"/> 
+    <general gaintype="fixed" biastype="affine" name="Ring_DIP_joint" joint="Ring_DIP" ctrlrange="-1.3961 -0.708346" gainprm="0.1" biasprm="0 -0.1 -0.001" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Pinky_Below_MCP_joint" joint="Pinky_Below_MCP" ctrlrange="-0.74186 0" gainprm="1" biasprm="0 -1 0" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Pinky_MCP_joint" joint="Pinky_MCP" ctrlrange="-1.4134 -0.46659" gainprm="1.5" biasprm="0 -1.5 -0.003" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Pinky_PIP_joint" joint="Pinky_PIP" ctrlrange="-1.32104 -0.67483" gainprm="1" biasprm="0 -1 -0.001" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Pinky_DIP_joint" joint="Pinky_DIP" ctrlrange="-1.38702 -0.70765" gainprm="0.1" biasprm="0 -0.1 -0.001" forcerange="-5 5"/>
+  </actuator>   
+</mujoco>

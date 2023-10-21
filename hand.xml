@@ -11,28 +11,27 @@
 
 
   <asset>
-    <mesh name="AUBO_Base" file="AUBO_Base.STL"/>
-    <mesh name="Below_Palm" file="Below_Palm.STL"/>
-    <mesh name="Knuckle_Holder" file="Knuckle_Holder.STL"/>
-    <mesh name="T_CMC" file="T_CMC.STL"/>
-    <mesh name="T_MCP" file="T_MCP.STL"/>
-    <mesh name="T_IP" file="T_IP.STL"/>
-    <mesh name="I_Below_MCP" file="I_Below_MCP.STL"/>
-    <mesh name="I_MCP" file="I_MCP.STL"/>
-    <mesh name="I_PIP" file="I_PIP.STL"/>
-    <mesh name="I_DIP" file="I_DIP.STL"/>
-    <mesh name="M_MCP" file="M_MCP.STL"/>
-    <mesh name="M_PIP" file="M_PIP.STL"/>
-    <mesh name="M_DIP" file="M_DIP.STL"/>
-    <mesh name="R_Below_MCP" file="R_Below_MCP.STL"/>
-    <mesh name="R_MCP" file="R_MCP.STL"/>
-    <mesh name="R_PIP" file="R_PIP.STL"/>
-    <mesh name="R_DIP" file="R_DIP.STL"/>
-    <mesh name="P_Below_MCP" file="P_Below_MCP.STL"/>
-    <mesh name="P_MCP" file="P_MCP.STL"/>
-    <mesh name="P_PIP" file="P_PIP.STL"/>
-    <mesh name="P_DIP" file="P_DIP.STL"/>
-    <texture type="skybox" builtin="gradient" rgb1="0 0 1" rgb2="0 1 0" width="256" height="256"/>
+    <mesh file="hand/AUBO_Base.STL"    />
+    <mesh file="hand/Below_Palm.STL"     />
+    <mesh file="hand/Knuckle_Holder.STL"  />
+    <mesh file="hand/T_CMC.STL"     />
+    <mesh file="hand/T_MCP.STL"   />
+    <mesh file="hand/T_IP.STL"    />
+    <mesh file="hand/I_Below_MCP.STL"      />
+    <mesh file="hand/I_MCP.STL"      />
+    <mesh file="hand/I_PIP.STL"    />
+    <mesh file="hand/I_DIP.STL"     />
+    <mesh file="hand/M_MCP.STL"      />
+    <mesh file="hand/M_PIP.STL"    />
+    <mesh file="hand/M_DIP.STL"      />
+    <mesh file="hand/R_Below_MCP.STL"    />
+    <mesh file="hand/R_MCP.STL"      />
+    <mesh file="hand/R_PIP.STL"     />
+    <mesh file="hand/R_DIP.STL"       />
+    <mesh file="hand/P_Below_MCP.STL"      />
+    <mesh file="hand/P_MCP.STL"      />
+    <mesh file="hand/P_PIP.STL"      />
+    <mesh file="hand/P_DIP.STL"     />
   </asset>
   <worldbody>
     <body name="AUBO_Base" pos="-0.00278 0 0">
@@ -159,7 +158,7 @@
     <general gaintype="fixed" biastype="affine" name="Middle_DIP_joint" joint="Middle_DIP" ctrlrange="-1.18872 -0.45629" gainprm="0.2" biasprm="0 -0.2 -0.002" forcerange="-5 5"/>
     <general gaintype="fixed" biastype="affine" name="Ring_Below_MCP_joint" joint="Ring_Below_MCP" ctrlrange="-0.52018 0" gainprm="1.2" biasprm="0 -1.2 0" forcerange="-5 5"/>
     <general gaintype="fixed" biastype="affine" name="Ring_MCP_joint" joint="Ring_MCP" ctrlrange="-1.35699 -0.470253" gainprm="1.5" biasprm="0 -1.5 -0.004" forcerange="-5 5"/>
-    <general gaintype="fixed" biastype="affine" name="Ring_PIP_joint" joint="Ring_PIP" ctrlrange="-1.41949 -0.691415" gainprm="0.7" biasprm="0 -0.7 -0.001" forcerange="-5 5"/> -->
+    <general gaintype="fixed" biastype="affine" name="Ring_PIP_joint" joint="Ring_PIP" ctrlrange="-1.41949 -0.691415" gainprm="0.7" biasprm="0 -0.7 -0.001" forcerange="-5 5"/> 
     <general gaintype="fixed" biastype="affine" name="Ring_DIP_joint" joint="Ring_DIP" ctrlrange="-1.3961 -0.708346" gainprm="0.1" biasprm="0 -0.1 -0.001" forcerange="-5 5"/>
     <general gaintype="fixed" biastype="affine" name="Pinky_Below_MCP_joint" joint="Pinky_Below_MCP" ctrlrange="-0.74186 0" gainprm="1" biasprm="0 -1 0" forcerange="-5 5"/>
     <general gaintype="fixed" biastype="affine" name="Pinky_MCP_joint" joint="Pinky_MCP" ctrlrange="-1.4134 -0.46659" gainprm="1.5" biasprm="0 -1.5 -0.003" forcerange="-5 5"/>
