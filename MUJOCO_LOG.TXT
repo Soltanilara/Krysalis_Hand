@@ -1,0 +1,42 @@
+Fri Oct 20 19:45:24 2023
+WARNING: mju_openResource: unknown file ''
+
+Tue Oct 24 16:53:49 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 28. The simulation is unstable. Time = 314.2440.
+
+Tue Oct 24 17:02:42 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 26. The simulation is unstable. Time = 242.7920.
+
+Tue Oct 24 17:08:04 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 26. The simulation is unstable. Time = 187.1360.
+
+Tue Oct 24 17:12:40 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 26. The simulation is unstable. Time = 68.3180.
+
+Tue Oct 24 17:18:57 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 26. The simulation is unstable. Time = 24.1300.
+
+Tue Oct 24 17:23:22 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 26. The simulation is unstable. Time = 175.8200.
+
+Fri Oct 27 11:51:28 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 26. The simulation is unstable. Time = 206.5000.
+
+Fri Oct 27 12:07:41 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 26. The simulation is unstable. Time = 116.6400.
+
+Fri Oct 27 12:23:28 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 26. The simulation is unstable. Time = 111.6740.
+
+Fri Oct 27 12:34:57 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 2. The simulation is unstable. Time = 228.6880.
+
+Fri Oct 27 12:47:50 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 26. The simulation is unstable. Time = 31.7100.
+
+Fri Oct 27 13:21:03 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 26. The simulation is unstable. Time = 247.1440.
+
+Fri Oct 27 18:47:33 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 11. The simulation is unstable. Time = 180.2960.
+

@@ -145,7 +145,7 @@
 
   <actuator>
     <general gaintype="fixed" biastype="affine" name="wrist_2_joint" joint="Wrist_2" ctrlrange="-1.1294 1.2489" gainprm="7" biasprm="0 -7 -1" forcerange="-5 5"/>
-    <general gaintype="fixed" biastype="affine" name="Wrist_1_joint" joint="Wrist_1" ctrlrange="-0.41544 0.41544" gainprm="7" biasprm="0 -7 -0.1" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Wrist_1_joint" joint="Wrist_1" ctrlrange="-0.41544 0.41544" gainprm="30" biasprm="0 -30 1" forcerange="-5 5"/>
     <general gaintype="fixed" biastype="affine" name="Thumb_CMC_joint" joint="Thumb_CMC" ctrlrange="-1.5708 0" gainprm="0.8" biasprm="0 -0.8 -0.005" forcerange="-5 5"/>
     <general gaintype="fixed" biastype="affine" name="Thumb_MCP_joint" joint="Thumb_MCP" ctrlrange="-1.5528 -0.86457" gainprm="0.2" biasprm="0 -0.2 -0.001" forcerange="-5 5"/>
     <general gaintype="fixed" biastype="affine" name="Thumb_IP_joint" joint="Thumb_IP" ctrlrange="-1.23306 -0.538504" gainprm="0.05" biasprm="0 -0.05 -0.0003" forcerange="-5 5"/>
@@ -153,7 +153,7 @@
     <general gaintype="fixed" biastype="affine" name="Index_MCP_joint" joint="Index_MCP" ctrlrange="-1.3654 -0.34457" gainprm="1" biasprm="0 -1 -0.006" forcerange="-10 10"/>
     <general gaintype="fixed" biastype="affine" name="Index_PIP_joint" joint="Index_PIP" ctrlrange="-1.4455 -0.7113" gainprm="1" biasprm="0 -1 -0.001" forcerange="-5 5"/>
     <general gaintype="fixed" biastype="affine" name="Index_DIP_joint" joint="Index_DIP" ctrlrange="-1.33744 -0.6394" gainprm="0.3" biasprm="0 -0.3 -0.001" forcerange="-5 5"/>
-    <general gaintype="fixed" biastype="affine" name="Middle_MCP_joint" joint="Middle_MCP" ctrlrange="-1.4628 -0.61793" gainprm="3.5" biasprm="0 -3.5 -0.002" forcerange="-5 5"/>
+    <general gaintype="fixed" biastype="affine" name="Middle_MCP_joint" joint="Middle_MCP" ctrlrange="-1.4628 -0.42033" gainprm="3.5" biasprm="0 -3.5 -0.002" forcerange="-5 5"/>
     <general gaintype="fixed" biastype="affine" name="Middle_PIP_joint" joint="Middle_PIP" ctrlrange="-1.40814 -0.74815" gainprm="2" biasprm="0 -2 -0.002" forcerange="-5 5"/>
     <general gaintype="fixed" biastype="affine" name="Middle_DIP_joint" joint="Middle_DIP" ctrlrange="-1.18872 -0.45629" gainprm="0.2" biasprm="0 -0.2 -0.002" forcerange="-5 5"/>
     <general gaintype="fixed" biastype="affine" name="Ring_Below_MCP_joint" joint="Ring_Below_MCP" ctrlrange="-0.52018 0" gainprm="1.2" biasprm="0 -1.2 0" forcerange="-5 5"/>
