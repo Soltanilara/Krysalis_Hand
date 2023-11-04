@@ -1,1 +1,0 @@
-# Five-Finger-Robotic-Hand
