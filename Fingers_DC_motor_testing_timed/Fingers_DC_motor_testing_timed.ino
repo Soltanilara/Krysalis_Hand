@@ -20,6 +20,8 @@
 //#define BIN2 6
 #define AIN1 9
 #define AIN2 10
+#define BIN1 5
+#define BIN2 6
 #define Voltage A5 //Analog pin reading power supply voltage
 
 /////////Encoder pin////////
@@ -80,37 +82,24 @@ void Set_PWMA(int dir, int pwmVal) {
   {
     digitalWrite(AIN1, HIGH);
     digitalWrite(AIN2, LOW);
+    digitalWrite(BIN1, HIGH);
+    digitalWrite(BIN2, LOW);
   }
   else if (dir == -1)
   {
     digitalWrite(AIN1, LOW);
     digitalWrite(AIN2, HIGH);
+    digitalWrite(BIN1, LOW);
+    digitalWrite(BIN2, HIGH);
   }
   else
   {
     digitalWrite(AIN1, LOW);
     digitalWrite(AIN2, LOW);
+    digitalWrite(BIN1, LOW);
+    digitalWrite(BIN2, LOW);
   }
 }
-
-// void Set_PWMB(int dir, int pwmVal) {
-//   analogWrite(BIN1, pwmVal);
-//   if(dir == 1)
-//   {
-//     digitalWrite(BIN1, HIGH);
-//     digitalWrite(BIN2, LOW);
-//   }
-//   else if (dir == -1)
-//   {
-//     digitalWrite(BIN1, LOW);
-//     digitalWrite(BIN2, HIGH);
-//   }
-//   else
-//   {
-//     digitalWrite(BIN1, LOW);
-//     digitalWrite(BIN2, LOW);
-//   }
-// }
 
 /*****Function function: external interrupt reads encoder data and has double frequency function. Note that external interrupt is triggered by jump edge********/
 void READ_ENCODER_L() {
@@ -125,19 +114,6 @@ void READ_ENCODER_L() {
     posi--;
   }
 }
-/*****Function function: external interrupt reads encoder data and has double frequency function. Note that external interrupt is triggered by jump edge********/
-// void READ_ENCODER_R() {
-//   int c = digitalRead(DIRECTION_R);
-//   if(c > 0)
-//   {
-//     posi++;
-//   }
-
-//   else
-//   {
-//     posi--;
-//   }
-// }
 
 void loop() {
   int pos = 0;
@@ -146,20 +122,31 @@ void loop() {
     pos = posi;
   }
 
-  Set_PWMA(1,100);
-  //Set_PWMB(1,100);
-  delay(900);
-  Serial.println(pos);
-
-  Set_PWMA(-1,100);
-  //Set_PWMB(-1,100);
-  delay(900);
-  Serial.println(pos);
+  for (int i = 0; i < 3; i++) {
+    Set_PWMA(1,100);
+    //Set_PWMB(1,100);
+    delay(200);
+    Set_PWMA(0, 5);
+    delay(100);
+  }
 
   Set_PWMA(0,100);
   //Set_PWMB(0,100);
-  delay(50);
-  Serial.println(pos);
+  delay(1000);
+
+  /*
+  for (int i = 0; i < 3; i++) {
+    Set_PWMA(-1,100);
+    //Set_PWMB(1,100);
+    delay(200);
+    Set_PWMA(0, 5);
+    delay(100);
+  }
+
+  Set_PWMA(0,100);
+  //Set_PWMB(0,100);
+  delay(1000);
+  Serial.println(pos);*/
   
 
 
