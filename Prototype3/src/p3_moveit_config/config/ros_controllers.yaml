@@ -1,0 +1,124 @@
+Hand_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - Wrist_2
+    - Wrist_1
+    - Index_Below_MCP
+    - Index_MCP
+    - Index_PIP
+    - Index_DIP
+    - Middle_MCP
+    - Middle_PIP
+    - Middle_DIP
+    - Pinky_Below_MCP
+    - Pinky_MCP
+    - Pinky_PIP
+    - Pinky_DIP
+    - Ring_Below_MCP
+    - Ring_MCP
+    - Ring_PIP
+    - Ring_DIP
+    - Thumb_CMC
+    - Thumb_MCP
+    - Thumb_IP
+  gains:
+    Wrist_2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Wrist_1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Index_Below_MCP:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Index_MCP:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Index_PIP:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Index_DIP:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Middle_MCP:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Middle_PIP:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Middle_DIP:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Pinky_Below_MCP:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Pinky_MCP:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Pinky_PIP:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Pinky_DIP:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Ring_Below_MCP:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Ring_MCP:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Ring_PIP:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Ring_DIP:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Thumb_CMC:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Thumb_MCP:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Thumb_IP:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1

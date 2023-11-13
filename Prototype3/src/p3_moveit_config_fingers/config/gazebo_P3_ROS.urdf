@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="P3_ROS">
+    <link name="AUBO_Base">
+        <inertial>
+            <origin xyz="0.00278040178371279 0.0137619089402064 -0.000267427347976779" rpy="0 0 0" />
+            <mass value="0.0536915416174576" />
+            <inertia ixx="2.70801043475091E-05" ixy="-4.02713297525871E-07" ixz="2.10419992156217E-07" iyy="4.87071775355948E-05" iyz="1.75973062686978E-07" izz="3.26759005649058E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/AUBO_Base.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/AUBO_Base.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Below_Palm">
+        <inertial>
+            <origin xyz="-0.00161904873633678 0.0170034509609812 0.000924243542658435" rpy="0 0 0" />
+            <mass value="0.0583769628757469" />
+            <inertia ixx="4.54620375746746E-05" ixy="-3.49858982409835E-07" ixz="2.96293190384862E-07" iyy="4.71250564940575E-05" iyz="-1.72909999743254E-06" izz="3.52450763174062E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/Below_Palm.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/Below_Palm.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Wrist_2" type="revolute">
+        <origin xyz="0 0 0.049" rpy="1.5708 0 1.5708" />
+        <parent link="AUBO_Base" />
+        <child link="Below_Palm" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.1294" upper="1.2489" effort="0" velocity="0" />
+    </joint>
+    <link name="Knuckle_Holder">
+        <inertial>
+            <origin xyz="0.00127180755281365 0.0369506250760439 -0.00063534532092032" rpy="0 0 0" />
+            <mass value="0.116848968632615" />
+            <inertia ixx="0.000126096351062626" ixy="7.84970809749604E-06" ixz="-2.9838290073608E-06" iyy="0.000151450089009521" iyz="2.70550323065712E-06" izz="0.000236651192540967" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/Knuckle_Holder.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/Knuckle_Holder.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Wrist_1" type="revolute">
+        <origin xyz="0 0.048 0.0027545" rpy="0 1.5708 0" />
+        <parent link="Below_Palm" />
+        <child link="Knuckle_Holder" />
+        <axis xyz="0 0 1" />
+        <limit lower="-0.41544" upper="0.41544" effort="0" velocity="0" />
+    </joint>
+    <link name="T_CMC">
+        <inertial>
+            <origin xyz="-0.0188547439499926 0.0171938818918783 -0.02142438462294" rpy="0 0 0" />
+            <mass value="0.00757646844060059" />
+            <inertia ixx="1.8547197356156E-06" ixy="3.95328998638882E-08" ixz="-4.21686926967571E-08" iyy="8.95427700424448E-07" iyz="-2.71565458332892E-07" izz="2.01850506438788E-06" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/T_CMC.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/T_CMC.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Thumb_CMC" type="revolute">
+        <origin xyz="-0.03389 -0.0067732 0.011594" rpy="2.1814 -0.59941 -0.7352" />
+        <parent link="Knuckle_Holder" />
+        <child link="T_CMC" />
+        <axis xyz="0.64279 0 0.76604" />
+        <limit lower="-1.5708" upper="0" effort="0" velocity="0" />
+    </joint>
+    <link name="T_MCP">
+        <inertial>
+            <origin xyz="-0.0191724859142255 0.0222044167762714 -0.0105839597746515" rpy="0 0 0" />
+            <mass value="0.00341830832417688" />
+            <inertia ixx="5.43824756092306E-07" ixy="4.39696982794731E-12" ixz="-1.36130893885665E-11" iyy="4.21320145077056E-07" iyz="1.45881129591116E-08" izz="6.4153361173526E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/T_MCP.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/T_MCP.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Thumb_MCP" type="revolute">
+        <origin xyz="0 0.051 -0.011349" rpy="0.024222 0 0" />
+        <parent link="T_CMC" />
+        <child link="T_MCP" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.5528" upper="-0.86457" effort="0" velocity="0" />
+    </joint>
+    <link name="T_IP">
+        <inertial>
+            <origin xyz="-0.019153877270479 0.0208567015566215 -0.011166175758786" rpy="0 0 0" />
+            <mass value="0.00367311050909873" />
+            <inertia ixx="3.21810615947136E-07" ixy="2.91776079744812E-11" ixz="-5.04769074712269E-10" iyy="2.60686503696625E-07" iyz="7.12951435821031E-08" izz="3.29785541515355E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/T_IP.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/T_IP.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Thumb_IP" type="revolute">
+        <origin xyz="0 0.0465 0" rpy="0.0052649 0 0" />
+        <parent link="T_MCP" />
+        <child link="T_IP" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.23306" upper="-0.538504" effort="0" velocity="0" />
+    </joint>
+    <link name="I_Below_MCP">
+        <inertial>
+            <origin xyz="-1.91332690316348E-08 0.00523994189276999 0.00438611499640017" rpy="0 0 0" />
+            <mass value="0.00534951941489969" />
+            <inertia ixx="7.32906606259805E-07" ixy="-1.39714191646785E-14" ixz="-8.65569458872673E-12" iyy="6.96470076212018E-07" iyz="-2.16946811935413E-07" izz="7.16960840620401E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/I_Below_MCP.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/I_Below_MCP.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Index_Below_MCP" type="revolute">
+        <origin xyz="-0.042 0.087 0" rpy="3.1416 0 -3.1416" />
+        <parent link="Knuckle_Holder" />
+        <child link="I_Below_MCP" />
+        <axis xyz="0 0 1" />
+        <limit lower="-0.52018" upper="0" effort="0" velocity="0" />
+    </joint>
+    <link name="I_MCP">
+        <inertial>
+            <origin xyz="1.60706075696959E-07 0.0214534559005647 -0.0126089340150891" rpy="0 0 0" />
+            <mass value="0.0042784827079899" />
+            <inertia ixx="8.95459066830798E-07" ixy="5.52207282220504E-13" ixz="1.00727231307694E-11" iyy="5.21814062850473E-07" iyz="-2.37787524308387E-08" izz="1.02538663795254E-06" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/I_MCP.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/I_MCP.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Index_MCP" type="revolute">
+        <origin xyz="0 0.028 0.0105" rpy="0 0 0" />
+        <parent link="I_Below_MCP" />
+        <child link="I_MCP" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.3654" upper="-0.34457" effort="0" velocity="0" />
+    </joint>
+    <link name="I_PIP">
+        <inertial>
+            <origin xyz="0.0104745637601555 0.0225277058184466 -5.84985698770524E-08" rpy="0 0 0" />
+            <mass value="0.00371498527382687" />
+            <inertia ixx="7.38341931114289E-07" ixy="-4.06415607145458E-09" ixz="-1.83681530443573E-11" iyy="4.59557692097787E-07" iyz="3.38393387626485E-12" izz="6.17675084887777E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/I_PIP.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/I_PIP.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Index_PIP" type="revolute">
+        <origin xyz="0 0.051 -0.00225" rpy="1.5708 1.5514 1.5708" />
+        <parent link="I_MCP" />
+        <child link="I_PIP" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.4455" upper="-0.7113" effort="0" velocity="0" />
+    </joint>
+    <link name="I_DIP">
+        <inertial>
+            <origin xyz="0.0102174474149143 0.0199762603712053 2.46091446727548E-07" rpy="0 0 0" />
+            <mass value="0.00425159376419967" />
+            <inertia ixx="4.98356420749076E-07" ixy="-9.57564593733141E-08" ixz="1.60587365235624E-11" iyy="4.23167175698519E-07" iyz="1.30948453717986E-11" izz="4.28705970306008E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/I_DIP.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/I_DIP.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Index_DIP" type="revolute">
+        <origin xyz="0 0.048 0" rpy="0 0 -0.019349" />
+        <parent link="I_PIP" />
+        <child link="I_DIP" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.337445" upper="-0.6394" effort="0" velocity="0" />
+    </joint>
+    <link name="M_MCP">
+        <inertial>
+            <origin xyz="0.0130000993756648 0.0194738060288053 -0.0122615751764491" rpy="0 0 0" />
+            <mass value="0.00356183832705754" />
+            <inertia ixx="6.33645316662712E-07" ixy="-7.48322283457872E-13" ixz="6.42992202281087E-13" iyy="4.32226138228889E-07" iyz="-2.1398582434494E-08" izz="7.46627420187009E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/M_MCP.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/M_MCP.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Middle_MCP" type="revolute">
+        <origin xyz="-0.001 0.121 -0.01094" rpy="3.1416 0 -3.1416" />
+        <parent link="Knuckle_Holder" />
+        <child link="M_MCP" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.4628" upper="-0.61793" effort="0" velocity="0" />
+    </joint>
+    <link name="M_PIP">
+        <inertial>
+            <origin xyz="0.0129994238022933 0.0252582720879362 -0.0108332662698445" rpy="0 0 0" />
+            <mass value="0.0042553891681153" />
+            <inertia ixx="8.07748529628043E-07" ixy="4.68568994911255E-11" ixz="-3.58312710518182E-11" iyy="5.2753515678823E-07" iyz="3.2166787078737E-08" izz="9.1440891219387E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/M_PIP.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/M_PIP.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Middle_PIP" type="revolute">
+        <origin xyz="0 0.045 -0.00225" rpy="0 0 0" />
+        <parent link="M_MCP" />
+        <child link="M_PIP" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.40814" upper="-0.74815" effort="0" velocity="0" />
+    </joint>
+    <link name="M_DIP">
+        <inertial>
+            <origin xyz="0.0129999509487357 0.0249602568688863 -0.0106926657966948" rpy="0 0 0" />
+            <mass value="0.00577415599836008" />
+            <inertia ixx="8.72036436536961E-07" ixy="1.19263359390556E-12" ixz="-3.90884366578215E-12" iyy="6.22688915702931E-07" iyz="1.33056795383682E-07" izz="9.77941426673379E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/M_DIP.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/M_DIP.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Middle_DIP" type="revolute">
+        <origin xyz="0 0.0515 0" rpy="0 0 0" />
+        <parent link="M_PIP" />
+        <child link="M_DIP" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.18872" upper="-0.45629" effort="0" velocity="0" />
+    </joint>
+    <link name="R_Below_MCP">
+        <inertial>
+            <origin xyz="1.38844317265421E-05 0.00524049779639665 -0.00438623992796771" rpy="0 0 0" />
+            <mass value="0.00534942423056677" />
+            <inertia ixx="7.32859981842569E-07" ixy="5.24609861584903E-10" ixz="-3.19407087097254E-10" iyy="6.96474845170847E-07" iyz="2.16933899555169E-07" izz="7.16930179843202E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/R_Below_MCP.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/R_Below_MCP.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Ring_Below_MCP" type="revolute">
+        <origin xyz="0.014 0.087 0" rpy="0 0 0" />
+        <parent link="Knuckle_Holder" />
+        <child link="R_Below_MCP" />
+        <axis xyz="0 0 1" />
+        <limit lower="-0.52018" upper="0" effort="0" velocity="0" />
+    </joint>
+    <link name="R_MCP">
+        <inertial>
+            <origin xyz="-4.65256594625596E-07 0.0189676045429669 -0.0120949901547308" rpy="0 0 0" />
+            <mass value="0.00326985606176487" />
+            <inertia ixx="5.88389022236639E-07" ixy="1.46189274353886E-11" ixz="-2.92986706885711E-11" iyy="3.86293542414919E-07" iyz="-2.05284784668316E-08" izz="6.57972639542673E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/R_MCP.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/R_MCP.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Ring_MCP" type="revolute">
+        <origin xyz="0 0.028 -0.0105" rpy="3.1416 0 3.1416" />
+        <parent link="R_Below_MCP" />
+        <child link="R_MCP" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.356995" upper="-0.470253" effort="0" velocity="0" />
+    </joint>
+    <link name="R_PIP">
+        <inertial>
+            <origin xyz="1.53922076234075E-06 0.023310450256673 -0.00984437691935296" rpy="0 0 0" />
+            <mass value="0.00384900712618792" />
+            <inertia ixx="7.15539545157502E-07" ixy="-4.66393665863244E-11" ixz="5.13601987777356E-11" iyy="4.60134113785076E-07" iyz="1.20538888918569E-08" izz="8.05246178054023E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/R_PIP.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/R_PIP.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Ring_PIP" type="revolute">
+        <origin xyz="0 0.045 -0.00225" rpy="0 0 0" />
+        <parent link="R_MCP" />
+        <child link="R_PIP" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.419486" upper="-0.691415" effort="0" velocity="0" />
+    </joint>
+    <link name="R_DIP">
+        <inertial>
+            <origin xyz="2.09227845606244E-07 0.024421248294507 -0.010469334340024" rpy="0 0 0" />
+            <mass value="0.00511134145781505" />
+            <inertia ixx="6.74826649967002E-07" ixy="1.29937901533371E-11" ixz="-3.05204360154962E-11" iyy="5.28552356982958E-07" iyz="1.26608709839672E-07" izz="7.46443382031746E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/R_DIP.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/R_DIP.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Ring_DIP" type="revolute">
+        <origin xyz="0 0.0515 0" rpy="0 0 0" />
+        <parent link="R_PIP" />
+        <child link="R_DIP" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.396095" upper="-0.708346" effort="0" velocity="0" />
+    </joint>
+    <link name="P_Below_MCP">
+        <inertial>
+            <origin xyz="8.41060112070913E-06 0.00526126613307609 -0.00439536374453332" rpy="0 0 0" />
+            <mass value="0.00533831973770942" />
+            <inertia ixx="7.31356207626987E-07" ixy="3.54914233705556E-10" ixz="-1.91691840441875E-10" iyy="6.9519118586746E-07" iyz="2.1644634707244E-07" izz="7.14609570286138E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/P_Below_MCP.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/P_Below_MCP.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Pinky_Below_MCP" type="revolute">
+        <origin xyz="0.042 0.087 0" rpy="0 0 0" />
+        <parent link="Knuckle_Holder" />
+        <child link="P_Below_MCP" />
+        <axis xyz="0 0 1" />
+        <limit lower="-0.74186" upper="0" effort="0" velocity="0" />
+    </joint>
+    <link name="P_MCP">
+        <inertial>
+            <origin xyz="-2.62886995769374E-07 0.0207434675492707 -0.011885339397321" rpy="0 0 0" />
+            <mass value="0.00321336885733434" />
+            <inertia ixx="6.01915424286415E-07" ixy="1.56668207946324E-11" ixz="-1.73583370408102E-11" iyy="3.7581939994914E-07" iyz="7.42197186572937E-09" izz="6.71567299326979E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/P_MCP.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/P_MCP.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Pinky_MCP" type="revolute">
+        <origin xyz="0 0.028 -0.0105" rpy="3.1416 0 3.1416" />
+        <parent link="P_Below_MCP" />
+        <child link="P_MCP" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.4134" upper="-0.46659" effort="0" velocity="0" />
+    </joint>
+    <link name="P_PIP">
+        <inertial>
+            <origin xyz="9.0053990615957E-07 0.0224316850854916 -0.00994106588374115" rpy="0 0 0" />
+            <mass value="0.00337816858545398" />
+            <inertia ixx="5.58901296964282E-07" ixy="7.55022683985797E-11" ixz="-7.14447678655336E-11" iyy="4.08812318893672E-07" iyz="1.14510097354083E-08" izz="6.47621020420649E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/P_PIP.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/P_PIP.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Pinky_PIP" type="revolute">
+        <origin xyz="0 0.0455 -0.00225" rpy="0 0 0" />
+        <parent link="P_MCP" />
+        <child link="P_PIP" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.32104" upper="-0.67483" effort="0" velocity="0" />
+    </joint>
+    <link name="P_DIP">
+        <inertial>
+            <origin xyz="2.94313484042186E-07 0.0238464231963276 -0.0104224927451851" rpy="0 0 0" />
+            <mass value="0.00496289403479215" />
+            <inertia ixx="6.31036277552133E-07" ixy="7.27355340203463E-12" ixz="3.00457466880974E-11" iyy="5.10039953410707E-07" iyz="1.22677990250329E-07" izz="7.00197724499799E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/P_DIP.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://P3_ROS/meshes/P_DIP.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Pinky_DIP" type="revolute">
+        <origin xyz="0 0.0465 0" rpy="0 0 0" />
+        <parent link="P_PIP" />
+        <child link="P_DIP" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.38702" upper="-0.70765" effort="0" velocity="0" />
+    </joint>
+    <transmission name="trans_Wrist_2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Wrist_2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Wrist_2_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Wrist_1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Wrist_1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Wrist_1_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Thumb_CMC">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Thumb_CMC">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Thumb_CMC_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Thumb_MCP">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Thumb_MCP">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Thumb_MCP_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Thumb_IP">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Thumb_IP">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Thumb_IP_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Index_Below_MCP">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Index_Below_MCP">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Index_Below_MCP_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Index_MCP">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Index_MCP">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Index_MCP_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Index_PIP">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Index_PIP">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Index_PIP_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Index_DIP">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Index_DIP">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Index_DIP_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Middle_MCP">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Middle_MCP">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Middle_MCP_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Middle_PIP">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Middle_PIP">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Middle_PIP_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Middle_DIP">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Middle_DIP">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Middle_DIP_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Ring_Below_MCP">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Ring_Below_MCP">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Ring_Below_MCP_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Ring_MCP">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Ring_MCP">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Ring_MCP_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Ring_PIP">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Ring_PIP">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Ring_PIP_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Ring_DIP">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Ring_DIP">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Ring_DIP_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Pinky_Below_MCP">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Pinky_Below_MCP">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Pinky_Below_MCP_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Pinky_MCP">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Pinky_MCP">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Pinky_MCP_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Pinky_PIP">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Pinky_PIP">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Pinky_PIP_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Pinky_DIP">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Pinky_DIP">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Pinky_DIP_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
+</robot>
+

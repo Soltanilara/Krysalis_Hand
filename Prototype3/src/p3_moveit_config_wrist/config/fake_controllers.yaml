@@ -1,0 +1,27 @@
+controller_list:
+  - name: fake_hand1_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - Wrist_2
+      - Wrist_1
+      - Index_Below_MCP
+      - Index_MCP
+      - Index_PIP
+      - Index_DIP
+      - Middle_MCP
+      - Middle_PIP
+      - Middle_DIP
+      - Pinky_Below_MCP
+      - Pinky_MCP
+      - Pinky_PIP
+      - Pinky_DIP
+      - Ring_Below_MCP
+      - Ring_MCP
+      - Ring_PIP
+      - Ring_DIP
+      - Thumb_CMC
+      - Thumb_MCP
+      - Thumb_IP
+initial:  # Define initial robot poses per group
+  - group: hand1
+    pose: OPEN

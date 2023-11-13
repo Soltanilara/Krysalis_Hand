@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: P3_ROS
+    relative_path: urdf/P3_ROS.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/P3_ROS.srdf
+  CONFIG:
+    author_name: AlAl
+    author_email: alal@gmail.com
+    generated_timestamp: 1697863083
