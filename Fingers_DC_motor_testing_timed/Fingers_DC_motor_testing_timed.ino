@@ -72,7 +72,7 @@ void setup() {
 
   //Analog input pin
   pinMode(Voltage,INPUT); //Initialize as input
-
+  
 }
 
 //Set the PWM value of motor A, the range is - 255~255, where 0~255 corresponds to the duty ratio of 0~100, and a negative number means the motor is reversed

@@ -1,4 +1,3 @@
-#include <util/atomic.h>
 #include <EEPROM.h>
 
 //Inputs
