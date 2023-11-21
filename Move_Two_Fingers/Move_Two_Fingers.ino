@@ -14,18 +14,15 @@
 #define BIN2 8
 
 //Motor variables
-#define PPR 7
-#define gearRatio 10
 #define SPEED 300
-double rotations = 15.0 / 0.35;
 
 //Track the number of pulses from each motor
 volatile int numPulsesA = 0;
 volatile int numPulsesB = 0;
 
 //Set the max and min number of pulses, which equates to number of rotations
-long maxPulsesCW = (int) (rotations * PPR * gearRatio);
-long maxPulsesCCW = 0;
+int maxPulsesCW = 3000; //(15 / 0.35) * 7 * 10
+int maxPulsesCCW = 0;
 
 enum state {
   ROTATECW = 0,
