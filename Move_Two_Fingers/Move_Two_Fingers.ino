@@ -10,29 +10,25 @@
 //Outputs
 #define AIN1 9
 #define AIN2 10
-#define BIN1 6
+#define BIN1 7
 #define BIN2 8
 
 //Motor variables
-#define SPEED 300
+#define SPEED 255
 
 //Track the number of pulses from each motor
 volatile int numPulsesA = 0;
 volatile int numPulsesB = 0;
 
 //Set the max and min number of pulses, which equates to number of rotations
-int maxPulsesCW = 3000; //(15 / 0.35) * 7 * 10
+int maxPulsesCW = 1000;
 int maxPulsesCCW = 0;
-
-enum state {
-  ROTATECW = 0,
-  ROTATECCW = 1,
-};
 
 bool toContinue = true;
 
-state currentStateA = ROTATECW;
-state currentStateB = ROTATECW;
+//Have the respective motors finished their cycles yet?
+bool aIncomplete = true;
+bool bIncomplete = true;
 
 void setup() {
   Serial.begin(9600);
@@ -51,13 +47,13 @@ void setup() {
   pinMode(AIN1, OUTPUT);
   pinMode(AIN2, OUTPUT);
   pinMode(BIN1, OUTPUT);
-  pinMode(BIN1, OUTPUT);
+  pinMode(BIN2, OUTPUT);
 
   //First set all the pins to low
   analogWrite(AIN1, LOW);
   analogWrite(AIN2, LOW);
   analogWrite(BIN1, LOW);
-  analogWrite(BIN1, LOW);
+  analogWrite(BIN2, LOW);
 }
 
 //Read the pulses of motor A
@@ -65,10 +61,10 @@ void readPulsesA() {
   int b = digitalRead(E1B);
 
   if (b > 0) {
-    numPulsesA++;
+    numPulsesA--;
   }
   else {
-    numPulsesA--;
+    numPulsesA++;
   }
 }
 
@@ -77,10 +73,10 @@ void readPulsesB() {
   int b = digitalRead(E2B);
 
   if (b > 0) {
-    numPulsesB++;
+    numPulsesB--;
   }
   else {
-    numPulsesB--;
+    numPulsesB++;
   }
 }
 
@@ -104,68 +100,58 @@ void Set_PWMB(int pwm)
 {
   if(pwm>0)
   {
-    analogWrite(AIN1, 255);
-    analogWrite(AIN2, 255 - pwm);
+    analogWrite(BIN1, 255);
+    analogWrite(BIN2, 255 - pwm);
   }
   else
   {
-    analogWrite(AIN1, 255 + pwm);
-    analogWrite(AIN2, 255);
+    analogWrite(BIN1, 255 + pwm);
+    analogWrite(BIN2, 255);
   }
 }
 
 void loop() {
-  if (toContinue) {
-    //Check the rotation state of Motor A
-    switch(currentStateA) {
-      case ROTATECW:
-        if (numPulsesA <= maxPulsesCW) {
-          Set_PWMA(SPEED);
-        }
-        else {
-          Set_PWMA(0);
-          delay(1000);
-
-          currentStateA = ROTATECCW;
-        }
-        break;
-      case ROTATECCW:
-        if (numPulsesA >= maxPulsesCCW) {
-          Set_PWMA(-SPEED);
-        }
-        else {
-          Set_PWMA(0);
-          delay(1000);
-
-          currentStateA = ROTATECW;
-        }
-        break;
+  while (aIncomplete || bIncomplete) {
+    if (numPulsesA <= maxPulsesCW) {
+      Set_PWMA(SPEED);
+    }
+    else {
+      Set_PWMA(0);
+      aIncomplete = false;
     }
 
-    //Check the rotation state of motorB
-    switch(currentStateB) {
-      case ROTATECW:
-        if (numPulsesB <= maxPulsesCW) {
-          Set_PWMB(SPEED);
-        }
-        else {
-          Set_PWMB(0);
-          delay(1000);
-
-          currentStateB = ROTATECCW;
-        }
-        break;
-      case ROTATECCW:
-        if (numPulsesB >= maxPulsesCCW) {
-          Set_PWMB(-SPEED);
-        }
-        else {
-          Set_PWMB(0);
-          delay(1000);
-
-          currentStateB = ROTATECW;
-        }
-        break;
+    if (numPulsesB <= maxPulsesCW) {
+      Set_PWMB(SPEED);
+    }
+    else {
+      Set_PWMB(0);
+      bIncomplete = false;
     }
   }
+
+  delay(1000);
+  aIncomplete = true;
+  bIncomplete = true;
+
+  while (aIncomplete || bIncomplete) {
+    if (numPulsesA >= maxPulsesCCW) {
+      Set_PWMA(-SPEED);
+    }
+    else {
+      Set_PWMA(0);
+      aIncomplete = false;
+    }
+
+    if (numPulsesB >= maxPulsesCCW) {
+      Set_PWMB(-SPEED);
+    }
+    else {
+      Set_PWMB(0);
+      bIncomplete = false;
+    }
+  }
+
+  delay(1000);
+  aIncomplete = true;
+  bIncomplete = true;
 }
