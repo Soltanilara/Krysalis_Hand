@@ -9,4 +9,4 @@ E*X*B = Hall sensor 2 for motor X, 1-6\
 *X*IN2 = M2 for motor X, A-F\
 
 ## Code
-The code currenty only moves the motors back and forth, with ability to save current position.
+The code currenty only moves the motors back and forth, without ability to save current position.
