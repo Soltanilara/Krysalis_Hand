@@ -1,2 +1,4 @@
 mujoco
 dm_control
+gymnasium
+numpy

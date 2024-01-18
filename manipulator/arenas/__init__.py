@@ -1,0 +1,1 @@
+from manipulator.arenas.standard import StandardArena

@@ -1,0 +1,1 @@
+from manipulator.envs.aubo_i5_hand_env import AuboI5HandEnv

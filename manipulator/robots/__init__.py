@@ -1,0 +1,1 @@
+from manipulator.robots.aubo_i5_hand import AuboI5Hand

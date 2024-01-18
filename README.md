@@ -11,7 +11,7 @@ pip install -r requirements.txt
 what file to run, what commands to make them run
 
 **To visualize asset XML files, you can run the following command:**
-```python
+```bash
 python -m mujoco.viwer --mjcf=/path/to/file.xml
 ```
 
