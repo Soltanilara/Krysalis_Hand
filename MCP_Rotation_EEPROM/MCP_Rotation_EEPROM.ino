@@ -10,7 +10,7 @@
 #define E3B 24
 #define E4A 19
 #define E4B 25
-#define button 20
+#define button 12
 
 //Outputs
 #define AIN1 4
@@ -23,7 +23,7 @@
 #define DIN2 11
 
 //Motor variables
-#define SPEED 255
+#define SPEED 100
 
 //Define the state
 enum state:byte {
@@ -43,7 +43,7 @@ volatile int numPulsesD = 0;
 //Set the max and min number of pulses, which equates to number of rotations
 int maxPulsesCWMiddleRing = 2000;
 int maxPulsesPinky = 2500;
-int maxPulsesIndex = 2700;
+int maxPulsesIndex = 2600;
 int maxPulsesCCW = 0;
 
 //Have the respective motors finished their cycles yet?
@@ -69,7 +69,6 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(E2A), readPulsesB, RISING);
   attachInterrupt(digitalPinToInterrupt(E3A), readPulsesC, RISING);
   attachInterrupt(digitalPinToInterrupt(E4A), readPulsesD, RISING);
-  attachInterrupt(digitalPinToInterrupt(button), stop, RISING);
 
   //Output setting
   pinMode(AIN1, OUTPUT);
@@ -107,12 +106,12 @@ void setup() {
 void stop() {
   EEPROM.write(0, currentState);
 
-  currentState = BREAK;
-
   Set_PWMA(0);
   Set_PWMB(0);
   Set_PWMC(0);
   Set_PWMD(0);
+
+  currentState = BREAK;
 
   writeToMemory(1, numPulsesA);
   writeToMemory(5, numPulsesB);
@@ -229,6 +228,10 @@ void Set_PWMD(int pwm)
 }
 
 void loop() {
+  if (digitalRead(button) == HIGH) {
+    stop();
+  }
+
   switch (currentState) {
     case CONTRACTING:
       if (numPulsesA <= maxPulsesPinky) {
@@ -265,15 +268,18 @@ void loop() {
 
       if (aComplete && bComplete && cComplete && dComplete) {
         delay(1000);
+
         aComplete = false;
         bComplete = false;
         cComplete = false;
         dComplete = false;
+
+        currentState = EXTENDING;
       }
       break;
 
     case EXTENDING:
-      if (numPulsesA >= maxPulsesCCW) {
+      if (numPulsesA > maxPulsesCCW) {
         Set_PWMA(-SPEED);
       }
       else {
@@ -281,7 +287,7 @@ void loop() {
         aComplete = true;
       }
 
-      if (numPulsesB >= maxPulsesCCW) {
+      if (numPulsesB > maxPulsesCCW) {
         Set_PWMB(-SPEED);
       }
       else {
@@ -289,7 +295,7 @@ void loop() {
         bComplete = true;
       }
 
-      if (numPulsesC >= maxPulsesCCW) {
+      if (numPulsesC > maxPulsesCCW) {
         Set_PWMC(-SPEED);
       }
       else {
@@ -297,7 +303,7 @@ void loop() {
         cComplete = true;
       }
 
-      if (numPulsesD >= maxPulsesCCW) {
+      if (numPulsesD > maxPulsesCCW) {
         Set_PWMD(-SPEED);
       }
       else {
@@ -307,11 +313,15 @@ void loop() {
     
       if (aComplete && bComplete && cComplete && dComplete) {
         delay(1000);
+
         aComplete = false;
         bComplete = false;
         cComplete = false;
         dComplete = false;
+
+        currentState = CONTRACTING;
       }
       break;
+    Serial.println(numPulsesD);
   }
 }
