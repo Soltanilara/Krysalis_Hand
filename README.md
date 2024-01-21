@@ -12,7 +12,7 @@ what file to run, what commands to make them run
 
 **To visualize asset XML files, you can run the following command:**
 ```bash
-python -m mujoco.viwer --mjcf=/path/to/file.xml
+python -m mujoco.viewer --mjcf=/path/to/file.xml
 ```
 
 ## 

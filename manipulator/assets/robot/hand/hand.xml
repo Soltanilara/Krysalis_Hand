@@ -1,0 +1,192 @@
+<mujoco model="P3">
+  <compiler angle="radian" meshdir="meshes" autolimits="true" />
+  <statistic meansize="0.0400109" extent="0.428527" center="0.0261175 0.00634581 0.159334" />
+
+  <default>
+    <geom density="1175" />
+    <default class="normal">
+      <geom density="1175" />
+    </default>
+  </default>
+
+
+  <asset>
+    <mesh file="AUBO_Base.STL" />
+    <mesh file="Below_Palm.STL" />
+    <mesh file="Knuckle_Holder.STL" />
+    <mesh file="T_CMC.STL" />
+    <mesh file="T_MCP.STL" />
+    <mesh file="T_IP.STL" />
+    <mesh file="I_Below_MCP.STL" />
+    <mesh file="I_MCP.STL" />
+    <mesh file="I_PIP.STL" />
+    <mesh file="I_DIP.STL" />
+    <mesh file="M_MCP.STL" />
+    <mesh file="M_PIP.STL" />
+    <mesh file="M_DIP.STL" />
+    <mesh file="R_Below_MCP.STL" />
+    <mesh file="R_MCP.STL" />
+    <mesh file="R_PIP.STL" />
+    <mesh file="R_DIP.STL" />
+    <mesh file="P_Below_MCP.STL" />
+    <mesh file="P_MCP.STL" />
+    <mesh file="P_PIP.STL" />
+    <mesh file="P_DIP.STL" />
+  </asset>
+  <worldbody>
+    <body name="AUBO_Base" pos="-0.00278 0 0">
+      <geom class="normal" type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="AUBO_Base" />
+      <body name="Below_Palm" pos="0 0 0.049" quat="0.499998 0.5 0.500002 0.5">
+        <joint name="Wrist_2" pos="0 0 0" axis="0 0 1" range="-1.1294 1.2489" />
+        <geom class="normal" type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="Below_Palm" />
+        <body name="Knuckle_Holder" pos="0 0.048 0.0027545" quat="0.707105 0 0.707108 0">
+          <joint name="Wrist_1" pos="0 0 0" axis="0 0 1" range="-0.41544 0.41544" />
+          <geom class="normal" type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="Knuckle_Holder" />
+          <body name="T_CMC" pos="-0.03389 -0.0067732 0.011594"
+            quat="0.505903 0.741795 -0.431791 0.085783">
+            <joint name="Thumb_CMC" pos="0 0 0" axis="0.642791 0 0.766041" range="-1.5708 0" />
+            <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="T_CMC" />
+            <body name="T_MCP" pos="0 0.051 -0.011349" quat="0.999927 0.0121107 0 0">
+              <joint name="Thumb_MCP" pos="0 0 0" axis="1 0 0" range="-1.5528 -0.86457" />
+              <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="T_MCP" />
+              <body name="T_IP" pos="0 0.0465 0" quat="0.999997 0.00263245 0 0">
+                <joint name="Thumb_IP" pos="0 0 0" axis="1 0 0" range="-1.23306 -0.538504" />
+                <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="T_IP" />
+              </body>
+            </body>
+          </body>
+          <body name="I_Below_MCP" pos="-0.042 0.087 0"
+            quat="1.34924e-11 -3.67321e-06 -1 3.67321e-06">
+            <joint name="Index_Below_MCP" pos="0 0 0" axis="0 0 1" range="-0.52018 0" />
+            <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="I_Below_MCP" />
+            <body name="I_MCP" pos="0 0.028 0.0105">
+              <joint name="Index_MCP" pos="0 0 0" axis="1 0 0" range="-1.3654 -0.34457" />
+              <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="I_MCP" />
+              <body name="I_PIP" pos="0 0.051 -0.00225"
+                quat="0.707074 0.00685753 0.707074 0.00685753">
+                <joint name="Index_PIP" pos="0 0 0" axis="0 0 1" range="-1.4455 -0.7113" />
+                <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="I_PIP" />
+                <body name="I_DIP" pos="0 0.048 0" quat="0.999953 0 0 -0.00967435">
+                  <joint name="Index_DIP" pos="0 0 0" axis="0 0 1" range="-1.33744 -0.6394" />
+                  <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="I_DIP" />
+                </body>
+              </body>
+            </body>
+          </body>
+          <body name="M_MCP" pos="-0.001 0.121 -0.01094"
+            quat="1.34924e-11 -3.67321e-06 -1 3.67321e-06">
+            <joint name="Middle_MCP" pos="0 0 0" axis="1 0 0" range="-1.4628 -0.61793" />
+            <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="M_MCP" />
+            <body name="M_PIP" pos="0 0.045 -0.00225">
+              <joint name="Middle_PIP" pos="0 0 0" axis="1 0 0" range="-1.40814 -0.74815" />
+              <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="M_PIP" />
+              <body name="M_DIP" pos="0 0.0515 0">
+                <joint name="Middle_DIP" pos="0 0 0" axis="1 0 0" range="-1.18872 -0.45629" />
+                <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="M_DIP" />
+              </body>
+            </body>
+          </body>
+          <body name="R_Below_MCP" pos="0.014 0.087 0">
+            <joint name="Ring_Below_MCP" pos="0 0 0" axis="0 0 1" range="-0.52018 0" />
+            <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="R_Below_MCP" />
+            <body name="R_MCP" pos="0 0.028 -0.0105" quat="1.34924e-11 -3.67321e-06 1 -3.67321e-06">
+              <joint name="Ring_MCP" pos="0 0 0" axis="1 0 0" range="-1.35699 -0.470253" />
+              <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="R_MCP" />
+              <body name="R_PIP" pos="0 0.045 -0.00225">
+                <joint name="Ring_PIP" pos="0 0 0" axis="1 0 0" range="-1.41949 -0.691415" />
+                <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="R_PIP" />
+                <body name="R_DIP" pos="0 0.0515 0">
+                  <joint name="Ring_DIP" pos="0 0 0" axis="1 0 0" range="-1.3961 -0.708346" />
+                  <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="R_DIP" />
+                </body>
+              </body>
+            </body>
+          </body>
+          <body name="P_Below_MCP" pos="0.042 0.087 0">
+            <joint name="Pinky_Below_MCP" pos="0 0 0" axis="0 0 1" range="-0.74186 0" />
+            <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="P_Below_MCP" />
+            <body name="P_MCP" pos="0 0.028 -0.0105" quat="1.34924e-11 -3.67321e-06 1 -3.67321e-06">
+              <joint name="Pinky_MCP" pos="0 0 0" axis="1 0 0" range="-1.4134 -0.46659" />
+              <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="P_MCP" />
+              <body name="P_PIP" pos="0 0.0455 -0.00225">
+                <joint name="Pinky_PIP" pos="0 0 0" axis="1 0 0" range="-1.32104 -0.67483" />
+                <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="P_PIP" />
+                <body name="P_DIP" pos="0 0.0465 0">
+                  <joint name="Pinky_DIP" pos="0 0 0" axis="1 0 0" range="-1.38702 -0.70765" />
+                  <geom type="mesh" rgba="0.698039 0.698039 0.698039 1" mesh="P_DIP" />
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+
+  <contact>
+    <exclude body1="Below_Palm" body2="AUBO_Base" />
+    <exclude body1="Below_Palm" body2="Knuckle_Holder" />
+    <exclude body1="Knuckle_Holder" body2="T_CMC" />
+    <exclude body1="Knuckle_Holder" body2="I_Below_MCP" />
+    <exclude body1="Knuckle_Holder" body2="M_MCP" />
+    <exclude body1="Knuckle_Holder" body2="R_Below_MCP" />
+    <exclude body1="Knuckle_Holder" body2="P_Below_MCP" />
+
+    <exclude body1="R_MCP" body2="R_Below_MCP" />
+    <exclude body1="P_MCP" body2="P_Below_MCP" />
+    <exclude body1="I_MCP" body2="I_Below_MCP" />
+
+    <exclude body1="R_MCP" body2="Knuckle_Holder" />
+    <exclude body1="P_MCP" body2="Knuckle_Holder" />
+    <exclude body1="I_MCP" body2="Knuckle_Holder" />
+
+    <exclude body1="T_CMC" body2="Knuckle_Holder" />
+    <exclude body1="T_CMC" body2="T_MCP" />
+    <exclude body1="T_MCP" body2="T_IP" />
+
+  </contact>
+
+  <actuator>
+    <general gaintype="fixed" biastype="affine" name="wrist_2_joint" joint="Wrist_2"
+      ctrlrange="-1.1294 1.2489" gainprm="7" biasprm="0 -7 -1" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Wrist_1_joint" joint="Wrist_1"
+      ctrlrange="-0.41544 0.41544" gainprm="30" biasprm="0 -30 1" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Thumb_CMC_joint" joint="Thumb_CMC"
+      ctrlrange="-1.5708 0" gainprm="0.8" biasprm="0 -0.8 -0.005" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Thumb_MCP_joint" joint="Thumb_MCP"
+      ctrlrange="-1.5528 -0.86457" gainprm="0.2" biasprm="0 -0.2 -0.001" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Thumb_IP_joint" joint="Thumb_IP"
+      ctrlrange="-1.23306 -0.538504" gainprm="0.05" biasprm="0 -0.05 -0.0003" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Index_Below_MCP_joint" joint="Index_Below_MCP"
+      ctrlrange="-0.52018 0" gainprm="1" biasprm="0 -1 0" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Index_MCP_joint" joint="Index_MCP"
+      ctrlrange="-1.3654 -0.34457" gainprm="1" biasprm="0 -1 -0.006" forcerange="-10 10" />
+    <general gaintype="fixed" biastype="affine" name="Index_PIP_joint" joint="Index_PIP"
+      ctrlrange="-1.4455 -0.7113" gainprm="1" biasprm="0 -1 -0.001" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Index_DIP_joint" joint="Index_DIP"
+      ctrlrange="-1.33744 -0.6394" gainprm="0.3" biasprm="0 -0.3 -0.001" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Middle_MCP_joint" joint="Middle_MCP"
+      ctrlrange="-1.4628 -0.42033" gainprm="3.5" biasprm="0 -3.5 -0.002" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Middle_PIP_joint" joint="Middle_PIP"
+      ctrlrange="-1.40814 -0.74815" gainprm="2" biasprm="0 -2 -0.002" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Middle_DIP_joint" joint="Middle_DIP"
+      ctrlrange="-1.18872 -0.45629" gainprm="0.2" biasprm="0 -0.2 -0.002" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Ring_Below_MCP_joint" joint="Ring_Below_MCP"
+      ctrlrange="-0.52018 0" gainprm="1.2" biasprm="0 -1.2 0" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Ring_MCP_joint" joint="Ring_MCP"
+      ctrlrange="-1.35699 -0.470253" gainprm="1.5" biasprm="0 -1.5 -0.004" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Ring_PIP_joint" joint="Ring_PIP"
+      ctrlrange="-1.41949 -0.691415" gainprm="0.7" biasprm="0 -0.7 -0.001" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Ring_DIP_joint" joint="Ring_DIP"
+      ctrlrange="-1.3961 -0.708346" gainprm="0.1" biasprm="0 -0.1 -0.001" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Pinky_Below_MCP_joint" joint="Pinky_Below_MCP"
+      ctrlrange="-0.74186 0" gainprm="1" biasprm="0 -1 0" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Pinky_MCP_joint" joint="Pinky_MCP"
+      ctrlrange="-1.4134 -0.46659" gainprm="1.5" biasprm="0 -1.5 -0.003" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Pinky_PIP_joint" joint="Pinky_PIP"
+      ctrlrange="-1.32104 -0.67483" gainprm="1" biasprm="0 -1 -0.001" forcerange="-5 5" />
+    <general gaintype="fixed" biastype="affine" name="Pinky_DIP_joint" joint="Pinky_DIP"
+      ctrlrange="-1.38702 -0.70765" gainprm="0.1" biasprm="0 -0.1 -0.001" forcerange="-5 5" />
+  </actuator>
+</mujoco> 

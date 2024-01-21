@@ -1,9 +1,9 @@
 import os
-from manipulator_mujoco.robots.arm import Arm
+from manipulator.robot.arm import Arm
 
 _AUBOI5_XML = os.path.join(
     os.path.dirname(__file__),
-    '../assets/aubo_i5_hand.xml',
+    '../assets/robot/aubo_i5/aubo_i5.xml',
 )
 
 _JOINTS = (
