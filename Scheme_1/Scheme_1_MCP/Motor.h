@@ -8,7 +8,7 @@
 #define DIN1 10
 #define DIN2 11
 
-void setupOutput() {
+void setupMotors() {
   //Output setting
   pinMode(AIN1, OUTPUT);
   pinMode(AIN2, OUTPUT);

@@ -30,12 +30,14 @@ volatile int numPulsesC = 0;
 volatile int numPulsesD = 0;
 
 //Set the max and min number of pulses, which equates to number of rotations
-int maxPulses = 2300;
+int maxPulsesPinky = 2300;
+int maxPulsesMiddleRing = 2300;
+int maxPulsesIndex = 1900;
 int minPulses = 0;
 
 //External inputs
-#define CONTRACT_SELF 21
-#define EXTEND_SELF 20
+#define CONTRACT_SELF 20
+#define EXTEND_SELF 21
 
 void setup() {
   Serial.begin(9600);
@@ -124,7 +126,7 @@ bool contract() {
   bool cComplete = false;
   bool dComplete = false;
 
-  if (numPulsesA <= maxPulses) {
+  if (numPulsesA <= maxPulsesPinky) {
       Set_PWMA(SPEED);
     }
     else {
@@ -132,7 +134,7 @@ bool contract() {
       aComplete = true;
     }
 
-    if (numPulsesB <= maxPulses) {
+    if (numPulsesB <= maxPulsesMiddleRing) {
       Set_PWMB(SPEED);
     }
     else {
@@ -140,7 +142,7 @@ bool contract() {
       bComplete = true;
     }
 
-    if (numPulsesC <= maxPulses) {
+    if (numPulsesC <= maxPulsesMiddleRing) {
       Set_PWMC(SPEED);
     }
     else {
@@ -148,7 +150,7 @@ bool contract() {
       cComplete = true;
     }
 
-    if (numPulsesD <= maxPulses) {
+    if (numPulsesD <= maxPulsesIndex) {
       Set_PWMD(SPEED);
     }
     else {
@@ -206,7 +208,7 @@ void loop() {
       if (contract()) {
         currentState = STOP;
         delay(1000);
-        extendMCP();
+        contractDIP();
       }
 
       break;
@@ -214,7 +216,7 @@ void loop() {
       if (extend()) {
         currentState = STOP;
         delay(1000);
-        contractMCP();
+        extendMCP();
       }
       break;
     default:
@@ -225,4 +227,5 @@ void loop() {
       break;
   }
   Serial.println(currentState);
+
 }

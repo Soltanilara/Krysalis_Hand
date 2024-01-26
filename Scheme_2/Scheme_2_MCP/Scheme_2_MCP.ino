@@ -18,10 +18,10 @@
 enum state {
   CONTRACT,
   EXTEND,
-  STOP
+  STOP,
 };
 
-volatile state currentState = STOP;
+volatile state currentState = CONTRACT;
 
 //Track the number of pulses from each motor
 volatile int numPulsesA = 0;
@@ -30,11 +30,11 @@ volatile int numPulsesC = 0;
 volatile int numPulsesD = 0;
 
 //Set the max and min number of pulses, which equates to number of rotations
-int maxPulses = 2300;
+int maxPulsesIndexPinkie = 2400;
+int maxPulsesMiddleRing = 1800;
 int minPulses = 0;
 
 //External inputs
-#define CONTRACT_SELF 21
 #define EXTEND_SELF 20
 
 void setup() {
@@ -49,21 +49,15 @@ void setup() {
   pinMode(E3B, INPUT);
   pinMode(E4A, INPUT);
   pinMode(E4B, INPUT);
-  pinMode(CONTRACT_SELF, INPUT);
   pinMode(EXTEND_SELF, INPUT);
   attachInterrupt(digitalPinToInterrupt(E1A), readPulsesA, RISING);
   attachInterrupt(digitalPinToInterrupt(E2A), readPulsesB, RISING);
   attachInterrupt(digitalPinToInterrupt(E3A), readPulsesC, RISING);
   attachInterrupt(digitalPinToInterrupt(E4A), readPulsesD, RISING);
-  attachInterrupt(digitalPinToInterrupt(CONTRACT_SELF), startContract, RISING);
   attachInterrupt(digitalPinToInterrupt(EXTEND_SELF), startExtend, RISING);
 
   setupMotors();
   setupSignal();
-}
-
-void startContract() {
-  currentState = CONTRACT;
 }
 
 void startExtend() {
@@ -124,7 +118,7 @@ bool contract() {
   bool cComplete = false;
   bool dComplete = false;
 
-  if (numPulsesA <= maxPulses) {
+  if (numPulsesA <= maxPulsesIndexPinkie) {
       Set_PWMA(SPEED);
     }
     else {
@@ -132,7 +126,7 @@ bool contract() {
       aComplete = true;
     }
 
-    if (numPulsesB <= maxPulses) {
+    if (numPulsesB <= maxPulsesMiddleRing) {
       Set_PWMB(SPEED);
     }
     else {
@@ -140,7 +134,7 @@ bool contract() {
       bComplete = true;
     }
 
-    if (numPulsesC <= maxPulses) {
+    if (numPulsesC <= maxPulsesMiddleRing) {
       Set_PWMC(SPEED);
     }
     else {
@@ -148,7 +142,7 @@ bool contract() {
       cComplete = true;
     }
 
-    if (numPulsesD <= maxPulses) {
+    if (numPulsesD <= maxPulsesIndexPinkie) {
       Set_PWMD(SPEED);
     }
     else {
@@ -206,15 +200,14 @@ void loop() {
       if (contract()) {
         currentState = STOP;
         delay(1000);
-        extendMCP();
+        contractPIP();
       }
 
       break;
     case EXTEND:
       if (extend()) {
-        currentState = STOP;
         delay(1000);
-        contractMCP();
+        currentState = CONTRACT;
       }
       break;
     default:

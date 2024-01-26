@@ -1,4 +1,5 @@
 #include "Motor.h"
+#include "Signal.h"
 
 //Inputs
 #define E1A 2
@@ -13,16 +14,30 @@
 //Motor variables
 #define SPEED 100
 
+//State
+enum state {
+  CONTRACT,
+  EXTEND,
+  STOP
+};
+
+volatile state currentState = STOP;
+
 //Track the number of pulses from each motor
 volatile int numPulsesA = 0;
 volatile int numPulsesB = 0;
 volatile int numPulsesC = 0;
 volatile int numPulsesD = 0;
 
-//Set the max number of pulses for each finger, which equates to number of rotations
-#define maxPulsesPinky 1950
-#define maxPulsesMiddleRing 2400
-#define maxPulsesIndex 1750
+//Set the max and min number of pulses, which equates to number of rotations
+int maxPulsesPinky = 2300;
+int maxPulsesMiddleRing = 2300;
+int maxPulsesIndex = 1900;
+int minPulses = 0;
+
+//External inputs
+#define CONTRACT_SELF 21
+#define EXTEND_SELF 20
 
 void setup() {
   Serial.begin(9600);
@@ -36,12 +51,25 @@ void setup() {
   pinMode(E3B, INPUT);
   pinMode(E4A, INPUT);
   pinMode(E4B, INPUT);
+  pinMode(CONTRACT_SELF, INPUT);
+  pinMode(EXTEND_SELF, INPUT);
   attachInterrupt(digitalPinToInterrupt(E1A), readPulsesA, RISING);
   attachInterrupt(digitalPinToInterrupt(E2A), readPulsesB, RISING);
   attachInterrupt(digitalPinToInterrupt(E3A), readPulsesC, RISING);
   attachInterrupt(digitalPinToInterrupt(E4A), readPulsesD, RISING);
+  attachInterrupt(digitalPinToInterrupt(CONTRACT_SELF), startContract, RISING);
+  attachInterrupt(digitalPinToInterrupt(EXTEND_SELF), startExtend, RISING);
 
-  setupOutput();
+  setupMotors();
+  setupSignal();
+}
+
+void startContract() {
+  currentState = CONTRACT;
+}
+
+void startExtend() {
+  currentState = EXTEND;
 }
 
 //Read the pulses of motor A
@@ -92,77 +120,112 @@ void readPulsesD() {
   }
 }
 
-//Returns true when it is still going;
-bool setPosition(double percent) {
-  int positionMiddleRing = (int) (maxPulsesMiddleRing * percent);
-  int positionIndex = (int) (maxPulsesIndex * percent);
-  int positionPinky = (int) (maxPulsesPinky * percent);
-  bool incomplete = false;
+bool contract() {
+  bool aComplete = false;
+  bool bComplete = false;
+  bool cComplete = false;
+  bool dComplete = false;
 
-  if (abs(numPulsesA - positionPinky) <= 5) {
-    Set_PWMA(0);
-  }
-  else if (numPulsesA <= positionPinky) {
-    Set_PWMA(SPEED);
-    incomplete = true;
-  }
-  else {
-    Set_PWMA(-SPEED);
-    incomplete = true;
-  }
+  if (numPulsesA <= maxPulsesPinky) {
+      Set_PWMA(SPEED);
+    }
+    else {
+      Set_PWMA(0);
+      aComplete = true;
+    }
 
-  if (abs(numPulsesB - positionMiddleRing) <= 5) {
-    Set_PWMB(0);
-  }
-  else if (numPulsesB <= positionMiddleRing) {
-    Set_PWMB(SPEED);
-    incomplete = true;
-  }
-  else {
-    Set_PWMB(-SPEED);
-    incomplete = true;
-  }
+    if (numPulsesB <= maxPulsesMiddleRing) {
+      Set_PWMB(SPEED);
+    }
+    else {
+      Set_PWMB(0);
+      bComplete = true;
+    }
 
-  if (abs(numPulsesC - positionMiddleRing) <= 5) {
-    Set_PWMC(0);
-  }
-  else if (numPulsesC <= positionMiddleRing) {
-    Set_PWMC(SPEED);
-    incomplete = true;
-  }
-  else {
-    Set_PWMC(-SPEED);
-    incomplete = true;
-  }
+    if (numPulsesC <= maxPulsesMiddleRing) {
+      Set_PWMC(SPEED);
+    }
+    else {
+      Set_PWMC(0);
+      cComplete = true;
+    }
 
-  if (abs(numPulsesD - positionIndex) <= 5) {
-    Set_PWMD(0);
-  }
-  else if (numPulsesD <= positionIndex) {
-    Set_PWMD(SPEED);
-    incomplete = true;
-  }
-  else {
-    Set_PWMD(-SPEED);
-    incomplete = true;
-  }
+    if (numPulsesD <= maxPulsesIndex) {
+      Set_PWMD(SPEED);
+    }
+    else {
+      Set_PWMD(0);
+      dComplete = true;
+    }
 
-  return incomplete;
+    return aComplete && bComplete && cComplete && dComplete;
 }
 
-void stop() {
-  Set_PWMA(0);
-  Set_PWMB(0);
-  Set_PWMC(0);
-  Set_PWMD(0);
+bool extend() {
+  bool aComplete = false;
+  bool bComplete = false;
+  bool cComplete = false;
+  bool dComplete = false;
+
+  if (numPulsesA >= minPulses) {
+      Set_PWMA(-SPEED);
+    }
+    else {
+      Set_PWMA(0);
+      aComplete = true;
+    }
+
+    if (numPulsesB >= minPulses) {
+      Set_PWMB(-SPEED);
+    }
+    else {
+      Set_PWMB(0);
+      bComplete = true;
+    }
+
+    if (numPulsesC >= minPulses) {
+      Set_PWMC(-SPEED);
+    }
+    else {
+      Set_PWMC(0);
+      cComplete = true;
+    }
+
+    if (numPulsesD >= minPulses) {
+      Set_PWMD(-SPEED);
+    }
+    else {
+      Set_PWMD(0);
+      dComplete = true;
+    }
+
+    return aComplete && bComplete && cComplete && dComplete;
 }
 
-void loop () {
-  while (setPosition(1));
-  Set_PWMA(0);
-  delay(1000);
-  while(setPosition(0));
-  Set_PWMA(0);
-  delay(1000);
-}
+void loop() {
+  switch (currentState) {
+    case CONTRACT:
+      if (contract()) {
+        currentState = STOP;
+        delay(1000);
+        contractDIP();
+      }
 
+      break;
+    case EXTEND:
+      if (extend()) {
+        currentState = STOP;
+        delay(1000);
+        extendDIP();
+      }
+      break;
+    default:
+      Set_PWMA(0);
+      Set_PWMB(0);
+      Set_PWMC(0);
+      Set_PWMD(0);
+      break;
+  }
+  Serial.println(currentState);
+
+}
