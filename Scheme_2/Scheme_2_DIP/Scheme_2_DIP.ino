@@ -35,7 +35,6 @@ int minPulses = 0;
 
 //External inputs
 #define CONTRACT_SELF 21
-#define EXTEND_SELF 20
 
 void setup() {
   Serial.begin(9600);
@@ -50,13 +49,11 @@ void setup() {
   pinMode(E4A, INPUT);
   pinMode(E4B, INPUT);
   pinMode(CONTRACT_SELF, INPUT);
-  pinMode(EXTEND_SELF, INPUT);
   attachInterrupt(digitalPinToInterrupt(E1A), readPulsesA, RISING);
   attachInterrupt(digitalPinToInterrupt(E2A), readPulsesB, RISING);
   attachInterrupt(digitalPinToInterrupt(E3A), readPulsesC, RISING);
   attachInterrupt(digitalPinToInterrupt(E4A), readPulsesD, RISING);
   attachInterrupt(digitalPinToInterrupt(CONTRACT_SELF), startContract, RISING);
-  attachInterrupt(digitalPinToInterrupt(EXTEND_SELF), startExtend, RISING);
 
   setupMotors();
   setupSignal();
@@ -64,10 +61,6 @@ void setup() {
 
 void startContract() {
   currentState = CONTRACT;
-}
-
-void startExtend() {
-  currentState = EXTEND;
 }
 
 //Read the pulses of motor A
@@ -206,7 +199,7 @@ void loop() {
       if (contract()) {
         currentState = STOP;
         delay(1000);
-        extendMCP();
+        currentState = EXTEND;
       }
 
       break;
@@ -214,7 +207,7 @@ void loop() {
       if (extend()) {
         currentState = STOP;
         delay(1000);
-        contractMCP();
+        extendPIP();
       }
       break;
     default:
