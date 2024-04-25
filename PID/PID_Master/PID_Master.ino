@@ -13,18 +13,22 @@ void setup() {
   Wire.begin();
 }
 
-bool ThumbDone() {
-  Wire.requestFrom(1, 1);
-  bool complete = Wire.read();
-  return complete;
-}
-
-void transmitThumb(float value) {
+void transmitThumb(float CMC, float MCP, float IP) {
   Wire.beginTransmission(1);
 
-  float copy = value;
+  float copy = CMC;
   byte* byteArray = (byte*) &copy;
 
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = MCP;
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = IP;
   for (int i = 0; i < 4; i++) {
     Wire.write(byteArray[i]);
   }
@@ -32,18 +36,27 @@ void transmitThumb(float value) {
   Wire.endTransmission();
 }
 
-bool MCPDone() {
-  Wire.requestFrom(2, 1);
-  bool complete = Wire.read();
-  return complete;
-}
-
-void transmitMCP(float value) {
+void transmitMCP(float m1, float m2, float m3, float m4) {
   Wire.beginTransmission(2);
 
-  float copy = value;
+  float copy = m1;
   byte* byteArray = (byte*) &copy;
 
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = m2;
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = m3;
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = m4;
   for (int i = 0; i < 4; i++) {
     Wire.write(byteArray[i]);
   }
@@ -51,18 +64,27 @@ void transmitMCP(float value) {
   Wire.endTransmission();
 }
 
-bool PIPDone() {
-  Wire.requestFrom(3, 1);
-  bool complete = Wire.read();
-  return complete;
-}
-
-void transmitPIP(float value) {
+void transmitPIP(float p1, float p2, float p3, float p4) {
   Wire.beginTransmission(3);
 
-  float copy = value;
+  float copy = p1;
   byte* byteArray = (byte*) &copy;
 
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = p2;
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = p3;
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = p4;
   for (int i = 0; i < 4; i++) {
     Wire.write(byteArray[i]);
   }
@@ -70,52 +92,50 @@ void transmitPIP(float value) {
   Wire.endTransmission();
 }
 
-bool DIPDone() {
-  Wire.requestFrom(4, 1);
-  bool complete = Wire.read();
-  return complete;
-}
-
-void transmitDIP(float value) {
+void transmitDIP(float d1, float d2, float d3, float d4) {
   Wire.beginTransmission(4);
 
-  float copy = value;
+  float copy = d1;
   byte* byteArray = (byte*) &copy;
 
   for (int i = 0; i < 4; i++) {
     Wire.write(byteArray[i]);
   }
-  // Serial.println(copy);
+
+  copy = d2;
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = d3;
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = d4;
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
 
   Wire.endTransmission();
 }
 
 void loop() {
-  switch(currentState) {
-    case CONTRACT:
-      transmitMCP(1.00);
-      transmitPIP(1.00);
-      transmitDIP(1.00);
-      transmitThumb(1.00);
-      delay(5);
+  //Individual control
+  // transmitMCP(1, 0, 0, 0);
 
-      if (MCPDone() && PIPDone() && DIPDone() && ThumbDone()) {
-        delay(1000);
-        currentState = EXTEND;
-      }
-      break;
-    default:
-      transmitMCP(0.00);
-      transmitPIP(0.00);
-      transmitDIP(0.00);
-      transmitThumb(0.00);
-      delay(5);
+  //Close half
+  // transmitMCP(1, 0, 1, 0);
+  // transmitPIP(0, 1, 0, 1);
+  // transmitDIP(1, 0, 1, 0);
 
-      if (MCPDone() && PIPDone() && DIPDone() && ThumbDone()) {
-        delay(1000);
-        currentState = CONTRACT;
-      }
-    
-      break;
-  }
+  //Close all
+  // transmitMCP(1, 1, 1, 1);
+  // transmitPIP(1, 1, 1, 1);
+  // transmitDIP(1, 1, 1, 1);
+
+  //Open all
+  transmitMCP(0, 0, 0, 0);
+  transmitPIP(0, 0, 0, 0);
+  transmitDIP(0, 0, 0, 0);
 }

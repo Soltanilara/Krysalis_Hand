@@ -15,7 +15,7 @@ extern volatile int cTarget;
 extern volatile int dTarget;
 
 //Set the max and min number of pulses, which equates to number of rotations
-const int maxPulsesIndex = 2400;
+const int maxPulsesIndex = 2150;
 const int maxPulsesMiddleRing = 1800;
 const int maxPulsesPinky = 2000;
 
@@ -27,7 +27,6 @@ void setup() {
 
   //I2C
   Wire.onReceive(receiveEvent);
-  Wire.onRequest(requestEvent);
 
   setupPosition();
   setupMotors();
@@ -35,29 +34,28 @@ void setup() {
 
 void receiveEvent() {
   if (Wire.available()) {
-    float prevPercentage = percentage;
     uint8_t* byteArray = (uint8_t*) &percentage;
 
     for (int i = 0; i < 4; i++) {
       byteArray[i] = Wire.read();
     }
-
-    if (prevPercentage != percentage) {
-      aTarget = (int) (maxPulsesPinky * percentage);
-      bTarget = (int) (maxPulsesMiddleRing * percentage);
-      cTarget = (int) (maxPulsesMiddleRing * percentage);
-      dTarget = (int) (maxPulsesIndex * percentage);
+    aTarget = (int) (maxPulsesPinky * percentage);
+    
+    for (int i = 0; i < 4; i++) {
+      byteArray[i] = Wire.read();
     }
+    bTarget = (int) (maxPulsesMiddleRing * percentage);
+    
+    for (int i = 0; i < 4; i++) {
+      byteArray[i] = Wire.read();
+    }
+    cTarget = (int) (maxPulsesMiddleRing * percentage);
+    
+    for (int i = 0; i < 4; i++) {
+      byteArray[i] = Wire.read();
+    }
+    dTarget = (int) (maxPulsesIndex * percentage);
   }
-}
-
-void requestEvent() {
-  bool aComplete = abs(numPulsesA - aTarget) < 10;
-  bool bComplete = abs(numPulsesB - bTarget) < 10;
-  bool cComplete = abs(numPulsesC - cTarget) < 10;
-  bool dComplete = abs(numPulsesD - dTarget) < 10;
-
-  Wire.write(aComplete && bComplete && cComplete && dComplete);
 }
 
 void loop() {

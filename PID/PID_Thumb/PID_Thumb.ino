@@ -25,7 +25,6 @@ void setup() {
 
   //I2C
   Wire.onReceive(receiveEvent);
-  Wire.onRequest(requestEvent);
 
   setupPosition();
   setupMotors();
@@ -33,28 +32,23 @@ void setup() {
 
 void receiveEvent() {
   if (Wire.available()) {
-    float prevPercentage = percentage;
     uint8_t* byteArray = (uint8_t*) &percentage;
 
     for (int i = 0; i < 4; i++) {
       byteArray[i] = Wire.read();
     }
+    aTarget = (int) (maxPulsesCMC * percentage);
 
-    if (prevPercentage != percentage) {
-      aTarget = (int) (maxPulsesCMC * percentage);
-      bTarget = (int) (maxPulsesMCP * percentage);
-      cTarget = (int) (maxPulsesIP * percentage);
+    for (int i = 0; i < 4; i++) {
+      byteArray[i] = Wire.read();
     }
+    bTarget = (int) (maxPulsesMCP * percentage);
+
+    for (int i = 0; i < 4; i++) {
+      byteArray[i] = Wire.read();
+    }
+    cTarget = (int) (maxPulsesIP * percentage);
   }
-}
-
-void requestEvent() {
-  bool aComplete = abs(numPulsesA - aTarget) < 3;
-  bool bComplete = abs(numPulsesB - bTarget) < 10;
-  bool cComplete = abs(numPulsesC - cTarget) < 10;
-
-  // Wire.write(aComplete && bComplete && cComplete);
-  Wire.write(bComplete && cComplete);
 }
 
 void loop() {

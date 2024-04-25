@@ -98,6 +98,7 @@ void setPosition() {
   
   //D's block
   dError = dTarget - numPulsesD;
+  Serial.println(numPulsesD);
   Set_PWMD(kp * dError);
   //End D's block
 }

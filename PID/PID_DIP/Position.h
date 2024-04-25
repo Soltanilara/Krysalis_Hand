@@ -18,7 +18,10 @@ volatile int numPulsesC = 0;
 volatile int numPulsesD = 0;
 
 //Target for each motor
-volatile int target = 0;
+volatile int target1 = 0;
+volatile int target2 = 0;
+volatile int target3 = 0;
+volatile int target4 = 0;
 
 //PID constants
 const int kp = 5;
@@ -79,22 +82,23 @@ void readPulsesD() {
 
 void setPosition() {
   //A's block
-  aError = target - numPulsesA;
+  aError = target1 - numPulsesA;
   Set_PWMA(kp * aError);
   //End A's block
 
   //B's block
-  bError = target - numPulsesB;
+  bError = target2 - numPulsesB;
   Set_PWMB(kp * bError);
   //End B's block
   
   //C's block
-  cError = target - numPulsesC;
+  cError = target3 - numPulsesC;
   Set_PWMC(kp * cError);
   //End C's block
   
   //D's block
-  dError = target - numPulsesD;
+  dError = target4 - numPulsesD;
+  Serial.println(dError);
   Set_PWMD(kp * dError);
   //End D's block
 }

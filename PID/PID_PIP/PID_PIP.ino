@@ -22,11 +22,10 @@ float percentage = 0;
 
 void setup() {
   Serial.begin(9600);
-  Wire.begin(2);
+  Wire.begin(3);
 
   //I2C
   Wire.onReceive(receiveEvent);
-  Wire.onRequest(requestEvent);
 
   setupPosition();
   setupMotors();
@@ -34,30 +33,30 @@ void setup() {
 
 void receiveEvent() {
   if (Wire.available()) {
-    float prevPercentage = percentage;
     uint8_t* byteArray = (uint8_t*) &percentage;
 
     for (int i = 0; i < 4; i++) {
       byteArray[i] = Wire.read();
     }
+    aTarget = (int) (maxPulsesMiddleRingPinky * percentage);
 
-    if (prevPercentage != percentage) {
-      aTarget = (int) (maxPulsesMiddleRingPinky * percentage);
-      bTarget = (int) (maxPulsesMiddleRingPinky * percentage);
-      cTarget = (int) (maxPulsesMiddleRingPinky * percentage);
-      dTarget = (int) (maxPulsesIndex * percentage);
+    for (int i = 0; i < 4; i++) {
+      byteArray[i] = Wire.read();
     }
+    bTarget = (int) (maxPulsesMiddleRingPinky * percentage);
+
+    for (int i = 0; i < 4; i++) {
+      byteArray[i] = Wire.read();
+    }
+    cTarget = (int) (maxPulsesMiddleRingPinky * percentage);
+
+    for (int i = 0; i < 4; i++) {
+      byteArray[i] = Wire.read();
+    }
+    dTarget = (int) (maxPulsesIndex * percentage);
   }
 }
 
-void requestEvent() {
-  bool aComplete = abs(numPulsesA - aTarget) < 10;
-  bool bComplete = abs(numPulsesB - bTarget) < 10;
-  bool cComplete = abs(numPulsesC - cTarget) < 10;
-  bool dComplete = abs(numPulsesD - dTarget) < 10;
-
-  Wire.write(aComplete && bComplete && cComplete && dComplete);
-}
 
 void loop() {
   setPosition();

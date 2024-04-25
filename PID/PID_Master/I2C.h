@@ -6,12 +6,27 @@ bool MCPDone() {
   return complete;
 }
 
-void transmitMCP(float value) {
+void transmitMCP(float m1, float m2, float m3, float m4) {
   Wire.beginTransmission(2);
 
-  float copy = value;
+  float copy = m1;
   byte* byteArray = (byte*) &copy;
 
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = m2;
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = m3;
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = m4;
   for (int i = 0; i < 4; i++) {
     Wire.write(byteArray[i]);
   }
@@ -25,12 +40,27 @@ bool PIPDone() {
   return complete;
 }
 
-void transmitPIP(float value) {
+void transmitPIP(float p1, float p2, float p3, float p4) {
   Wire.beginTransmission(3);
 
-  float copy = value;
+  float copy = p1;
   byte* byteArray = (byte*) &copy;
 
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = p2;
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = p3;
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = p4;
   for (int i = 0; i < 4; i++) {
     Wire.write(byteArray[i]);
   }
@@ -44,16 +74,30 @@ bool DIPDone() {
   return complete;
 }
 
-void transmitDIP(float value) {
+void transmitDIP(float d1, float d2, float d3, float d4) {
   Wire.beginTransmission(4);
 
-  float copy = value;
+  float copy = d1;
   byte* byteArray = (byte*) &copy;
 
   for (int i = 0; i < 4; i++) {
     Wire.write(byteArray[i]);
   }
-  // Serial.println(copy);
+
+  copy = d2;
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = d3;
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
+
+  copy = d4;
+  for (int i = 0; i < 4; i++) {
+    Wire.write(byteArray[i]);
+  }
 
   Wire.endTransmission();
 }
