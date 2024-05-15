@@ -24,10 +24,10 @@ void MCP4_Cb(const std_msgs::Float32& MCP4_msg) {
   MCP4 = MCP4_msg.data;
 }
 
-ros::Subscriber<std_msgs::Float32> sub_MCP1("MCP1", MCP1_Cb);
-ros::Subscriber<std_msgs::Float32> sub_MCP2("MCP2", MCP2_Cb);
-ros::Subscriber<std_msgs::Float32> sub_MCP3("MCP3", MCP3_Cb);
-ros::Subscriber<std_msgs::Float32> sub_MCP4("MCP4", MCP4_Cb);
+ros::Subscriber<std_msgs::Float32> sub_MCP1("MCP1", &MCP1_Cb);
+ros::Subscriber<std_msgs::Float32> sub_MCP2("MCP2", &MCP2_Cb);
+ros::Subscriber<std_msgs::Float32> sub_MCP3("MCP3", &MCP3_Cb);
+ros::Subscriber<std_msgs::Float32> sub_MCP4("MCP4", &MCP4_Cb);
 
 void ROS_Setup(ros::NodeHandle nh) {
   nh.subscribe(sub_MCP1);
