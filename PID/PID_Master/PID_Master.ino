@@ -1,16 +1,21 @@
+#include <ros.h>
+#include <std_msgs/Float32.h>
 #include <Wire.h>
-// #include "I2C.h"
+#include "ros_setup.h"
 
-enum state {
-  CONTRACT,
-  EXTEND
-};
+extern volatile float MCP1;
+extern volatile float MCP2;
+extern volatile float MCP3;
+extern volatile float MCP4;
 
-state currentState = CONTRACT;
+ros::NodeHandle nh;
 
 void setup() {
   Serial.begin(9600);
   Wire.begin();
+
+  nh.initNode();
+  ROS_Setup(nh);
 }
 
 void transmitThumb(float CMC, float MCP, float IP) {
@@ -121,21 +126,7 @@ void transmitDIP(float d1, float d2, float d3, float d4) {
 }
 
 void loop() {
-  //Individual control
-  // transmitMCP(1, 0, 0, 0);
+  transmitMCP(MCP1, MCP2, MCP3, MCP4);
 
-  //Close half
-  // transmitMCP(1, 0, 1, 0);
-  // transmitPIP(0, 1, 0, 1);
-  // transmitDIP(1, 0, 1, 0);
-
-  //Close all
-  // transmitMCP(1, 1, 1, 1);
-  // transmitPIP(1, 1, 1, 1);
-  // transmitDIP(1, 1, 1, 1);
-
-  //Open all
-  transmitMCP(0, 0, 0, 0);
-  transmitPIP(0, 0, 0, 0);
-  transmitDIP(0, 0, 0, 0);
+  nh.spinOnce();
 }
