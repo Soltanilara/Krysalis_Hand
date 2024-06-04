@@ -15,8 +15,7 @@ extern volatile int cTarget;
 extern volatile int dTarget;
 
 //Set the max and min number of pulses, which equates to number of rotations
-int maxPulsesMiddleRingPinky = 2300;
-int maxPulsesIndex = 1900;
+const int maxPulses = 3100;
 
 float percentage = 0;
 
@@ -31,6 +30,15 @@ void setup() {
   setupMotors();
 }
 
+void normalize(float& value) {
+  if (value > 1) {
+    value = 1;
+  }
+  else if (value < 0) {
+    value = 0;
+  }
+}
+
 void receiveEvent() {
   if (Wire.available()) {
     uint8_t* byteArray = (uint8_t*) &percentage;
@@ -38,22 +46,26 @@ void receiveEvent() {
     for (int i = 0; i < 4; i++) {
       byteArray[i] = Wire.read();
     }
-    aTarget = (int) (maxPulsesMiddleRingPinky * percentage);
+    normalize(percentage);
+    aTarget = (int) (maxPulses * percentage);
 
     for (int i = 0; i < 4; i++) {
       byteArray[i] = Wire.read();
     }
-    bTarget = (int) (maxPulsesMiddleRingPinky * percentage);
+    normalize(percentage);
+    bTarget = (int) (maxPulses * percentage);
 
     for (int i = 0; i < 4; i++) {
       byteArray[i] = Wire.read();
     }
-    cTarget = (int) (maxPulsesMiddleRingPinky * percentage);
+    normalize(percentage);
+    cTarget = (int) (maxPulses * percentage);
 
     for (int i = 0; i < 4; i++) {
       byteArray[i] = Wire.read();
     }
-    dTarget = (int) (maxPulsesIndex * percentage);
+    normalize(percentage);
+    dTarget = (int) (maxPulses * percentage);
   }
 }
 

@@ -15,7 +15,7 @@ extern volatile int target3;
 extern volatile int target4;
 
 //Set the max and min number of pulses, which equates to number of rotations
-const int maxPulses = 2300;
+const int maxPulses = 3000; //Index and middle can do 3100
 
 float percentage = 0;
 
@@ -31,6 +31,15 @@ void setup() {
   setupMotors();
 }
 
+void normalize(float& value) {
+  if (value > 1) {
+    value = 1;
+  }
+  else if (value < 0) {
+    value = 0;
+  }
+}
+
 void receiveEvent() {
   if (Wire.available()) {
     uint8_t* byteArray = (uint8_t*) &percentage;
@@ -38,22 +47,26 @@ void receiveEvent() {
     for (int i = 0; i < 4; i++) {
       byteArray[i] = Wire.read();
     }
-    target1 = (int) (percentage * maxPulses);
+    normalize(percentage);
+    target1 = (int) (maxPulses * percentage);
 
     for (int i = 0; i < 4; i++) {
       byteArray[i] = Wire.read();
     }
-    target2 = (int) (percentage * maxPulses);
+    normalize(percentage);
+    target2 = (int) (maxPulses * percentage);
 
     for (int i = 0; i < 4; i++) {
       byteArray[i] = Wire.read();
     }
-    target3 = (int) (percentage * maxPulses);
+    normalize(percentage);
+    target3 = (int) (maxPulses * percentage);
 
     for (int i = 0; i < 4; i++) {
       byteArray[i] = Wire.read();
     }
-    target4 = (int) (percentage * maxPulses);
+    normalize(percentage);
+    target4 = (int) (maxPulses * percentage);
   }
 }
 

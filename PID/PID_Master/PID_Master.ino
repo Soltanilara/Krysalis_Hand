@@ -1,21 +1,26 @@
 #include <ros.h>
-#include <std_msgs/Float32.h>
+#include <std_msgs/Float32MultiArray.h>
 #include <Wire.h>
-#include "ros_setup.h"
+// #include "ros_setup.h"
 
-extern volatile float MCP1;
-extern volatile float MCP2;
-extern volatile float MCP3;
-extern volatile float MCP4;
+volatile float jointArray[3] = {0};
 
 ros::NodeHandle nh;
+
+void messageCb(const std_msgs::Float32MultiArray& msg) {
+  for (int i = 0; i < 3; i++) {
+    jointArray[i] = msg.data[i];
+  }
+}
+
+ros::Subscriber<std_msgs::Float32MultiArray> sub("joints", &messageCb);
 
 void setup() {
   Serial.begin(9600);
   Wire.begin();
 
   nh.initNode();
-  ROS_Setup(nh);
+  nh.subscribe(sub);
 }
 
 void transmitThumb(float CMC, float MCP, float IP) {
@@ -126,7 +131,9 @@ void transmitDIP(float d1, float d2, float d3, float d4) {
 }
 
 void loop() {
-  transmitMCP(MCP1, MCP2, MCP3, MCP4);
+  transmitMCP(jointArray[0], 0, 0, 0);
+  transmitPIP(jointArray[1], 0, 0, 0);
+  transmitDIP(jointArray[2], 0, 0, 0);
 
   nh.spinOnce();
 }
