@@ -79,7 +79,7 @@ void setupPosition() {
 void setPosition() {
   //A's block
   aError = aTarget - numPulsesA;
-  Set_PWMA(kp * aError);
+  Set_PWMA(aError);
   //End A's block
 
   //B's block

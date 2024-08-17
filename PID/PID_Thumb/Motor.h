@@ -42,13 +42,13 @@ void Set_PWMA(int pwm)
   
   if(pwm>0)
   {
-    analogWrite(AIN1, 255 - pwm);
-    analogWrite(AIN2, 255);
+    analogWrite(AIN1, 255);
+    analogWrite(AIN2, 255 - pwm);
   }
   else
   {
-    analogWrite(AIN1, 255);
-    analogWrite(AIN2, 255 + pwm);
+    analogWrite(AIN1, 255 + pwm);
+    analogWrite(AIN2, 255);
   }
 }
 

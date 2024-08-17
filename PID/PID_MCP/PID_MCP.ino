@@ -15,7 +15,7 @@ extern volatile int cTarget;
 extern volatile int dTarget;
 
 //Set the max and min number of pulses, which equates to number of rotations
-const int maxPulses = 3900;
+const int maxPulses = 3800; //3900
 
 float percentage = 0;
 
@@ -47,7 +47,7 @@ void receiveEvent() {
       byteArray[i] = Wire.read();
     }
     normalize(percentage);
-    aTarget = (int) (maxPulses* percentage);
+    aTarget = (int) (maxPulses * percentage);
     
     for (int i = 0; i < 4; i++) {
       byteArray[i] = Wire.read();
