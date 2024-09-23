@@ -69,7 +69,6 @@ void receiveEvent() {
   }
 }
 
-
 void loop() {
   setPosition();
 }

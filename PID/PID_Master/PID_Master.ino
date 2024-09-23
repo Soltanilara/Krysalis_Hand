@@ -184,10 +184,29 @@ void loop() {
   transmitDIP(0, 0, 0, 0);
   transmitThumb(0, 0, 0);
 
-  // transmitMCP(103.14, 101.93, 100.57, 98.94);
-  // transmitPIP(75.08, 73.47, 72.93, 72.04);
-  // transmitDIP(68.1, 73.05, 73.58, 72.06);
-  // transmitThumb(0, 52.73, 45);
+  // Index touching thumb
+  // transmitMCP(103.14, 0, 0, 0);
+  // transmitPIP(75.08, 0, 0, 0);
+  // transmitDIP(0, 0, 0, 0);
+  // transmitThumb(30, 52.73, 40);
+
+  // Middle touching thumb
+  // transmitMCP(0, 101.93, 0, 0);
+  // transmitPIP(0, 73.47, 0, 0);
+  // transmitDIP(0, 0, 0, 0);
+  // transmitThumb(40, 52.73, 45);
+
+  // Ring touching thumb
+  // transmitMCP(0, 0, 85, 0);
+  // transmitPIP(0, 0, 72.93, 0);
+  // transmitDIP(0, 0, 0, 0);
+  // transmitThumb(70, 52.73, 20);
+
+  // Pinkie touching thumb
+  // transmitMCP(0, 0, 0, 98.94);
+  // transmitPIP(0, 0, 0, 60);
+  // transmitDIP(0, 0, 0, 0);
+  // transmitThumb(90, 0, 30);
 
   // nh.spinOnce();
 }
