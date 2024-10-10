@@ -72,5 +72,7 @@ void loop() {
   //     break;
   // }
   // level();
-  right();
+  level();
+  servoRight.ledOn(1, 1);
+  servoLeft.ledOn(1, 1);
 }

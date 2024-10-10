@@ -13,7 +13,7 @@ extern volatile int bTarget;
 extern volatile int cTarget;
 
 //Set the max and min number of pulses, which equates to number of rotations
-const int maxPulsesCMC = 1400;
+const int maxPulsesCMC = 1800;
 const int maxPulsesMCP = 2900;
 const int maxPulsesIP = 3000;
 
@@ -52,5 +52,10 @@ void receiveEvent() {
 }
 
 void loop() {
-  setPosition();
+  // setPosition();
+  Set_PWMA(-50);
+  Serial.println(numPulsesA);
+  // Serial.print(digitalRead(18));
+  // Serial.print(" ");
+  // Serial.println(digitalRead(24));
 }

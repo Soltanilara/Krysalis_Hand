@@ -32,10 +32,10 @@ void readPulsesA() {
   int b = digitalRead(E1B);
 
   if (b > 0) {
-    numPulsesA--;
+    numPulsesA++;
   }
   else {
-    numPulsesA++;
+    numPulsesA--;
   }
 }
 
@@ -71,7 +71,7 @@ void setupPosition() {
   pinMode(E2B, INPUT);
   pinMode(E3A, INPUT);
   pinMode(E3B, INPUT);
-  attachInterrupt(digitalPinToInterrupt(E1A), readPulsesA, RISING);
+  attachInterrupt(digitalPinToInterrupt(E1A), readPulsesA, FALLING);
   attachInterrupt(digitalPinToInterrupt(E2A), readPulsesB, RISING);
   attachInterrupt(digitalPinToInterrupt(E3A), readPulsesC, RISING);
 }
