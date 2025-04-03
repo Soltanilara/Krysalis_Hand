@@ -1,0 +1,6 @@
+[submodule "Hand-Codes"]
+	path = Hand-Codes
+	url = git@github.com:JustinChang04/Hand-Codes.git
+[submodule "glove_ROS"]
+	path = glove_ROS
+	url = git@github.com:JustinChang04/glove_ROS.git
