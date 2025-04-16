@@ -1,4 +1,6 @@
-# All Codes for the Krysallis Hand
+# Krysallis Hand
+## Introduction
+This repository holds all the code necessary to operate the *Krysalis Hand* and conduct *teleoperation* using the MANUS Meta Glove. 
 
 ## Modules:
 
