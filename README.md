@@ -5,7 +5,7 @@ Krysalis Hand is a five-finger robotic end-effector that combines a lightweight 
 
 The Krysalis repository holds all the code necessary to operate the *Krysalis Hand* and conduct *teleoperation* using the MANUS Meta Glove. It is recommended to use a Linux machine to run this code.
 
-To learn more about the details of our robotic hand, check out our [paper](https://arxiv.org/abs/2504.12967).
+You can learn more details of our robotic hand from our [preprint paper](https://arxiv.org/abs/2504.12967).
 
 <img src="image/hand.png" alt="Kysallis Hand">
 
@@ -14,7 +14,7 @@ To learn more about the details of our robotic hand, check out our [paper](https
 
 ### Hand-Codes
 
-The Hand-Codes repository contains all of the firmware for all of the Arduinos. The master runs on a Raspberry Pi Pico, while the rest the modules (MCP, PIP, DIP, etc.) run on Arduino. The Arduino Codes in each of the folders is readily available, but the Raspberry Pi Pico code requires a few more steps before build.
+The Hand-Codes repository contains all of the firmware for all of the Arduinos. The master runs on a Raspberry Pi Pico, and the MCP, PIP, DIP, thumb, and wrist modules run on Arduino Megas. The abduction motor is driven by a Robotis OpenRB-150, programmable via the Arduino IDE.
 
 ### SDKClient_Linux
 
@@ -26,9 +26,9 @@ This code is pulled from the LEAP Hand's [Bidex Manus Teleop](https://github.com
 
 ### glove_ROS
 
-In glove_ROS you can find the code used for teleoperation of the Krysalis Hand using a ROS2 workspace for communication and Pybullet for angle calculations. 
+The glove_ROS repository contains the ROS 2 package for teleoperating the Krysalis Hand. It uses ROS 2 messages to communicate with the Raspberry Pi Pic, and it uses Pybullet for to calculate joint angles via inverse kinematics. 
 
-This code is also pulled from the LEAP Hand's [ROS 2 Library](https://github.com/leap-hand/Bidex_Manus_Teleop) for teleoperating their hand from using the MANUS Meta Gloves. We then repurposed the code to fit the dimensions of the Krysalis Hand. 
+This code is also pulled from the LEAP Hand's [ROS 2 Library](https://github.com/leap-hand/Bidex_Manus_Teleop) for teleoperating their hand from using the MANUS Meta Gloves. We  repurposed the code to fit the dimensions of the Krysalis Hand. 
 
 ![](image/IMG_6141.mov)
 
