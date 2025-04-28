@@ -14,7 +14,7 @@ To learn more about the details of our robotic hand, check out our [paper](https
 
 ### Hand-Codes
 
-Contains the firmware for running the Krysallis hand.
+The Hand-Codes repository contains all of the firmware for all of the Arduinos. The master runs on a Raspberry Pi Pico, while the rest the modules (MCP, PIP, DIP, etc.) run on Arduino. The Arduino Codes in each of the folders is readily available, but the Raspberry Pi Pico code requires a few more steps before build.
 
 ### SDKClient_Linux
 
