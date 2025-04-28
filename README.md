@@ -1,6 +1,14 @@
-# Krysallis Hand
-## Introduction
-This repository holds all the code necessary to operate the *Krysalis Hand* and conduct *teleoperation* using the MANUS Meta Glove. 
+# Krysalis Hand
+
+## Overview
+Krysalis Hand is a five-finger robotic end-effector that combines a lightweight design, high payload capacity, and a high number of degrees of freedom (DoF) to enable dexterous manipulation in both industrial and research settings. 
+
+The Krysalis repository holds all the code necessary to operate the *Krysalis Hand* and conduct *teleoperation* using the MANUS Meta Glove. 
+
+To learn more about the details of our robotic hand, check out our [paper](https://arxiv.org/abs/2504.12967).
+
+<img src="image/IMG_3371.jpg" alt="Kysallis Hand" width = 200>
+
 
 ## Modules:
 
