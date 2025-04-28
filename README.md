@@ -10,11 +10,13 @@ You can learn more details of our robotic hand from our [preprint paper](https:/
 <img src="image/hand.png" alt="Kysallis Hand">
 
 
-## Modules:
+## Robot Operations
 
 ### Hand-Codes
 
-The Hand-Codes repository contains all of the firmware for all of the Arduinos. The master runs on a Raspberry Pi Pico, and the MCP, PIP, DIP, thumb, and wrist modules run on Arduino Megas. The abduction motor is driven by a Robotis OpenRB-150, programmable via the Arduino IDE.
+The Hand-Codes repository contains all of the firmware for all of the Arduinos. The master runs on a Raspberry Pi Pico, while the MCP, PIP, DIP, Thumb, and Wrist modules run on Arduino Megas. The abduction motor is driven by a Robotis OpenRB-150, programmable via the Arduino IDE.
+
+## Teleoperation
 
 ### SDKClient_Linux
 
@@ -30,7 +32,6 @@ The glove_ROS repository contains the ROS 2 package for teleoperating the Krysal
 
 This code is also pulled from the LEAP Hand's [ROS 2 Library](https://github.com/leap-hand/Bidex_Manus_Teleop) for teleoperating their hand from using the MANUS Meta Gloves. We  repurposed the code to fit the dimensions of the Krysalis Hand. 
 
-![](image/IMG_6141.mov)
 
 
 
