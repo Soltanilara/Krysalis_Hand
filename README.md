@@ -20,7 +20,7 @@ The Hand-Codes repository contains all of the firmware for all of the Arduinos. 
 
 ### SDKClient_Linux
 
-The MANUS SDK is used to pull real time fingertip data from the MANUS Glove to the ROS 2 Nodes which is then used to calculate the joint angles for teleoperation. For specific steps on downloading and running the SDK, check out the [SDKClient_Linux Readme](https://github.com/Soltanilara/Krysalis_Hand/tree/main/SDKClient_Linux)
+The MANUS SDK is used to pull real time fingertip data from the MANUS Glove to the ROS 2 Nodes which is then used to calculate the joint angles for teleoperation. For specific steps on downloading and running the SDK, check out the SDKClient_Linux [Readme](https://github.com/Soltanilara/Krysalis_Hand/tree/main/SDKClient_Linux)
 
 This code is pulled from the LEAP Hand's [Bidex Manus Teleop](https://github.com/leap-hand/Bidex_Manus_Teleop) repository for teleoperating their hand using the MANUS Meta Gloves. It is similar to the MANUS [C++ SDK](https://docs.manus-meta.com/2.4.0/Plugins/SDK/) but adds [ZMQ bindings](https://github.com/zeromq/cppzmq/tree/master) to communicate with the ROS 2 package. 
 
@@ -28,7 +28,7 @@ This code is pulled from the LEAP Hand's [Bidex Manus Teleop](https://github.com
 
 ### glove_ROS
 
-The glove_ROS repository contains the ROS 2 package for teleoperating the Krysalis Hand. It uses ROS 2 messages to communicate with the Raspberry Pi Pic, and it uses Pybullet for to calculate joint angles via inverse kinematics. 
+The glove_ROS repository contains the ROS 2 package for teleoperating the Krysalis Hand. It uses ROS 2 messages to communicate with the Raspberry Pi Pico, and it uses Pybullet for calculating joint angles via inverse kinematics.
 
 This code is also pulled from the LEAP Hand's [ROS 2 Library](https://github.com/leap-hand/Bidex_Manus_Teleop) for teleoperating their hand from using the MANUS Meta Gloves. We  repurposed the code to fit the dimensions of the Krysalis Hand. 
 
