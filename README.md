@@ -18,7 +18,7 @@ The Hand-Codes repository contains all of the firmware for all of the Arduinos. 
 
 ## Teleoperation
 
-<center><img src="image/IMG_6141.gif" ...></center>
+<center><img src="image/IMG_6141.gif" width = 200></center>
 
 
 ### SDKClient_Linux
