@@ -7,7 +7,7 @@ The Krysalis repository holds all the code necessary to operate the *Krysalis Ha
 
 You can learn more details of our robotic hand from our [preprint paper](https://arxiv.org/abs/2504.12967).
 
-<img src="image/hand.png" alt="Kysallis Hand">
+<img src="image/PIC1.jpg" alt="Kysallis Hand">
 
 
 ## Robot Operations
@@ -17,6 +17,9 @@ You can learn more details of our robotic hand from our [preprint paper](https:/
 The Hand-Codes repository contains all of the firmware for all of the Arduinos. The master runs on a Raspberry Pi Pico, while the MCP, PIP, DIP, Thumb, and Wrist modules run on Arduino Megas. The abduction motor is driven by a Robotis OpenRB-150, programmable via the Arduino IDE.
 
 ## Teleoperation
+
+<center><img src="image/IMG_6141.gif" ...></center>
+
 
 ### SDKClient_Linux
 
