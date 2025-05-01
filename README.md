@@ -19,7 +19,7 @@ The Hand-Codes repository contains all of the firmware for all of the Arduinos. 
 ## Teleoperation
 
 <div align = "center">
-    <img src = "image/IMG_6141.gif" width = 300/>
+    <img src = "image/IMG_6141.gif" width = 200/>
 </div>
 
 
