@@ -8,7 +8,9 @@ cd build
 cmake ..
 sudo make -j4 install
 ```
-To build, in this directory, run:
+Follow the [MANUS SDK Download](https://docs.manus-meta.com/2.4.0/Plugins/SDK/Linux/) Instruction for "Core Integrated" without Dockers
+
+Now to build in this directory, run:
 ```
 make
 ```
@@ -18,4 +20,4 @@ To run the SDK Client, run:
 ./SDKClient_Linux.out
 ```
 
-In the start menu, choose Core Integrated.
+In the start menu, choose Core Integrated py pressing 1.
