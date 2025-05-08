@@ -1,17 +1,42 @@
-# Krysallis Hand
-## Introduction
-This repository holds all the code necessary to operate the *Krysalis Hand* and conduct *teleoperation* using the MANUS Meta Glove. 
+# Krysalis Hand
 
-## Modules:
+## Overview
+Krysalis Hand is a five-finger robotic end-effector that combines a lightweight design, high payload capacity, and a high number of degrees of freedom (DoF) to enable dexterous manipulation in both industrial and research settings. 
+
+The Krysalis repository holds all the code necessary to operate the *Krysalis Hand* and conduct *teleoperation* using the MANUS Meta Glove. It is recommended to use a Linux machine to run this code.
+
+You can learn more details of our robotic hand from our [preprint paper](https://arxiv.org/abs/2504.12967).
+
+<img src="image/PIC1.jpg" alt="Kysallis Hand">
+
+
+## Robot Operations
 
 ### Hand-Codes
 
-Contains the firmware for running the Krysallis hand.
+The Hand-Codes repository contains all of the firmware for all of the Arduinos. The master runs on a Raspberry Pi Pico, while the MCP, PIP, DIP, Thumb, and Wrist modules run on Arduino Megas. The abduction motor is driven by a Robotis OpenRB-150, programmable via the Arduino IDE.
+
+## Teleoperation
+
+<div align = "center">
+    <img src = "image/IMG_6141.gif" width = 200/>
+</div>
+
 
 ### SDKClient_Linux
 
-This code is pulled from the LEAP Hand's [ROS 2 Library](https://github.com/leap-hand/Bidex_Manus_Teleop) for teleoperating their hand from using the MANUS Meta Gloves. It is similar to the MANUS [C++ SDK](https://docs.manus-meta.com/2.4.0/Plugins/SDK/) but adds [ZMQ bindings](https://github.com/zeromq/cppzmq/tree/master) to communicate with the ROS 2 package.
+The MANUS SDK is used to pull real time fingertip data from the MANUS Glove to the ROS 2 Nodes which is then used to calculate the joint angles for teleoperation. For specific steps on downloading and running the SDK, check out the SDKClient_Linux [Readme](https://github.com/Soltanilara/Krysalis_Hand/tree/main/SDKClient_Linux)
+
+This code is pulled from the LEAP Hand's [Bidex Manus Teleop](https://github.com/leap-hand/Bidex_Manus_Teleop) repository for teleoperating their hand using the MANUS Meta Gloves. It is similar to the MANUS [C++ SDK](https://docs.manus-meta.com/2.4.0/Plugins/SDK/) but adds [ZMQ bindings](https://github.com/zeromq/cppzmq/tree/master) to communicate with the ROS 2 package. 
+
 
 ### glove_ROS
 
-This code is also pulled from the LEAP Hand's [ROS 2 Library](https://github.com/leap-hand/Bidex_Manus_Teleop) for teleoperating their hand from using the MANUS Meta Gloves. We repurposed the ROS 2 code to fit the dimensions of the Krysallis Hand.
+The glove_ROS repository contains the ROS 2 package for teleoperating the Krysalis Hand. It uses ROS 2 messages to communicate with the Raspberry Pi Pico, and it uses Pybullet for calculating joint angles via inverse kinematics. We receive ROS 2 messages on the Raspberry Pi Pico through MicroROS. This allows the Pico to act as a ROS 2 node cabable of recieving ROS 2 messages. You are able to find the MicroROS code [here](https://github.com/JustinChang04/RPI_Master/tree/dc12b7e4e52b672246c9c0be6d0988972ae36f15).
+
+
+This code is also pulled from the LEAP Hand's [ROS 2 Library](https://github.com/leap-hand/Bidex_Manus_Teleop) for teleoperating their hand from using the MANUS Meta Gloves. We  repurposed the code to fit the dimensions of the Krysalis Hand. 
+
+
+
+
